@@ -6,15 +6,19 @@ In Linux environments, application services (e.g., Nginx, MySQL, custom microser
 Choosing the Non-Interactive Shell: /sbin/nologin vs /bin/false
 When an interactive login attempt is made on these shells, the session terminates immediately. However, they handle the termination differently:
 
-Shell Path	Execution Behavior	Log Output
-/sbin/nologin	Exits with status 1.	Displays a default message: "This account is currently not available." and logs the attempt to syslog.
-/bin/false	Exits with status 1.	Silently terminates the connection without displaying any text output.
+| Shell Path	|Execution Behavior	|Log Output|
+| -------- | -------- | -------- |
+|/sbin/nologin	| Exits with status 1.	| Displays a default message: "This account is currently not available." and logs the attempt to syslog.|
+|/bin/false	| Exits with status 1.| 	Silently terminates the connection without displaying any text output.|
+
+
 Implementation Guide
 1. Creating a New Non-Interactive System User
 To provision a new system service user with its login shell explicitly set to /sbin/nologin, execute the following useradd command:
 
- `Bash
-sudo useradd -r -s /sbin/nologin myapp `
+ Bash
+`sudo useradd -r -s /sbin/nologin myapp `
+
 Flag Breakdown:
 
 -r: Creates a system account. This automatically assigns a UID/GID below the standard user threshold (typically < 1000) and skips creating a standard /home directory unless explicitly requested.
