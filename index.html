@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -115,9 +116,20 @@
             font-weight: 600;
         }
 
-        .status-completed { background-color: rgba(74, 222, 128, 0.15); color: var(--success); }
-        .status-progress { background-color: rgba(251, 191, 36, 0.15); color: var(--warning); }
-        .status-pending { background-color: rgba(148, 163, 184, 0.15); color: var(--text-muted); }
+        .status-completed {
+            background-color: rgba(74, 222, 128, 0.15);
+            color: var(--success);
+        }
+
+        .status-progress {
+            background-color: rgba(251, 191, 36, 0.15);
+            color: var(--warning);
+        }
+
+        .status-pending {
+            background-color: rgba(148, 163, 184, 0.15);
+            color: var(--text-muted);
+        }
 
         .challenge-title {
             font-size: 1.25rem;
@@ -141,6 +153,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <div class="container">
@@ -150,11 +163,12 @@
         </header>
 
         <div class="search-container">
-            <input type="text" id="searchInput" class="search-bar" placeholder="Search challenges by title or tech stack...">
+            <input type="text" id="searchInput" class="search-bar"
+                placeholder="Search challenges by title or tech stack...">
         </div>
 
         <div class="challenge-grid" id="challengeGrid">
-            
+
             <a href="01-linux-user-setup" class="challenge-card">
                 <div>
                     <div class="card-header">
@@ -177,7 +191,8 @@
                         <span class="status-badge status-progress">In Progress</span>
                     </div>
                     <h2 class="challenge-title">Temporary User Setup with Expiry</h2>
-                    <p class="challenge-desc">Create a temporary user account with an automatic expiry date for limited-time access.</p>
+                    <p class="challenge-desc">Create a temporary user account with an automatic expiry date for
+                        limited-time access.</p>
                 </div>
                 <div class="card-footer">
                     <span>Tech: Linux</span>
@@ -192,7 +207,8 @@
                         <span class="status-badge status-pending">Pending</span>
                     </div>
                     <h2 class="challenge-title">Secure Root SSH Access</h2>
-                    <p class="challenge-desc">Configure secure root SSH access with key-based authentication and disable password authentication.</p>
+                    <p class="challenge-desc">Configure secure root SSH access with key-based authentication and disable
+                        password authentication.</p>
                 </div>
                 <div class="card-footer">
                     <span>Tech: Linux</span>
@@ -207,7 +223,8 @@
                         <span class="status-badge status-pending">Completed</span>
                     </div>
                     <h2 class="challenge-title">Install and Configure PostgreSQL</h2>
-                    <p class="challenge-desc">Install PostgreSQL and configure it for use in a development environment.</p>
+                    <p class="challenge-desc">Install PostgreSQL and configure it for use in a development environment.
+                    </p>
                 </div>
                 <div class="card-footer">
                     <span>Tech: Linux</span>
@@ -215,12 +232,28 @@
                 </div>
             </a>
 
-            </div>
+            <a href="18-install-and-configure-mariadb" class="challenge-card">
+                <div>
+                    <div class="card-header">
+                        <span class="challenge-num">Challenge 18</span>
+                        <span class="status-badge status-pending">Completed</span>
+                    </div>
+                    <h2 class="challenge-title">Install and Configure MariaDB</h2>
+                    <p class="challenge-desc">Install and configure MariaDB and create a database for use in a
+                        development environment.</p>
+                </div>
+                <div class="card-footer">
+                    <span>Tech: Linux</span>
+                    <span>Est: 1h</span>
+                </div>
+            </a>
+
+        </div>
     </div>
 
     <script>
         // Simple client-side search functionality
-        document.getElementById('searchInput').addEventListener('keyup', function() {
+        document.getElementById('searchInput').addEventListener('keyup', function () {
             const searchValue = this.value.toLowerCase();
             const cards = document.querySelectorAll('.challenge-card');
 
@@ -228,7 +261,7 @@
                 const title = card.querySelector('.challenge-title').textContent.toLowerCase();
                 const desc = card.querySelector('.challenge-desc').textContent.toLowerCase();
                 const tech = card.querySelector('.card-footer').textContent.toLowerCase();
-                
+
                 if (title.includes(searchValue) || desc.includes(searchValue) || tech.includes(searchValue)) {
                     card.style.display = "flex";
                 } else {
@@ -238,4 +271,5 @@
         });
     </script>
 </body>
+
 </html>
