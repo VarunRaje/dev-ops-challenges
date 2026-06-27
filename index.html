@@ -188,7 +188,7 @@
                 <div>
                     <div class="card-header">
                         <span class="challenge-num">Challenge 02</span>
-                        <span class="status-badge status-progress">In Progress</span>
+                        <span class="status-badge status-completed">Completed</span>
                     </div>
                     <h2 class="challenge-title">Temporary User Setup with Expiry</h2>
                     <p class="challenge-desc">Create a temporary user account with an automatic expiry date for
@@ -196,7 +196,7 @@
                 </div>
                 <div class="card-footer">
                     <span>Tech: Linux</span>
-                    <span>Est: 2h</span>
+                    <span>Est: 1h</span>
                 </div>
             </a>
 
@@ -204,15 +204,44 @@
                 <div>
                     <div class="card-header">
                         <span class="challenge-num">Challenge 03</span>
-                        <span class="status-badge status-pending">Pending</span>
+                        <span class="status-badge status-completed">Completed</span>
                     </div>
                     <h2 class="challenge-title">Secure Root SSH Access</h2>
-                    <p class="challenge-desc">Configure secure root SSH access with key-based authentication and disable
-                        password authentication.</p>
+                    <p class="challenge-desc">Disable direct root SSH login and configure servers to enforce administrative login accountability.</p>
                 </div>
                 <div class="card-footer">
                     <span>Tech: Linux</span>
                     <span>Est: 3h</span>
+                </div>
+            </a>
+
+            <a href="challenges/04-script-execution-permissions" class="challenge-card">
+                <div>
+                    <div class="card-header">
+                        <span class="challenge-num">Challenge 04</span>
+                        <span class="status-badge status-completed">Completed</span>
+                    </div>
+                    <h2 class="challenge-title">Script Execution Permissions</h2>
+                    <p class="challenge-desc">Modify file permissions for a distributed script to grant read and execute access for all users using symbolic and numeric modes.</p>
+                </div>
+                <div class="card-footer">
+                    <span>Tech: Linux</span>
+                    <span>Est: 1h</span>
+                </div>
+            </a>
+
+            <a href="challenges/05-selinux-installation-and-configuration" class="challenge-card">
+                <div>
+                    <div class="card-header">
+                        <span class="challenge-num">Challenge 05</span>
+                        <span class="status-badge status-completed">Completed</span>
+                    </div>
+                    <h2 class="challenge-title">SELinux Installation and Configuration</h2>
+                    <p class="challenge-desc">Install essential SELinux packages on the App Server, and update the configuration file to permanently disable SELinux at system boot.</p>
+                </div>
+                <div class="card-footer">
+                    <span>Tech: Linux</span>
+                    <span>Est: 1h</span>
                 </div>
             </a>
 
@@ -271,7 +300,8 @@
                         <span class="status-badge status-completed">Completed</span>
                     </div>
                     <h2 class="challenge-title">Configure Nginx + PHP-FPM Using Unix Sock</h2>
-                    <p class="challenge-desc">Install Nginx and PHP-FPM 8.3 on App Server 2, and configure them to communicate over a high-performance Unix domain socket.</p>
+                    <p class="challenge-desc">Install Nginx and PHP-FPM 8.3 on App Server 2, and configure them to
+                        communicate over a high-performance Unix domain socket.</p>
                 </div>
                 <div class="card-footer">
                     <span>Tech: Nginx / PHP / Linux</span>
@@ -286,7 +316,8 @@
                         <span class="status-badge status-completed">Completed</span>
                     </div>
                     <h2 class="challenge-title">Set Up Git Repository on Storage Server</h2>
-                    <p class="challenge-desc">Install Git on the Storage Server, initialize a central bare repository at /opt/news.git, and verify the repository structure.</p>
+                    <p class="challenge-desc">Install Git on the Storage Server, initialize a central bare repository at
+                        /opt/news.git, and verify the repository structure.</p>
                 </div>
                 <div class="card-footer">
                     <span>Tech: Git / Linux</span>
@@ -301,7 +332,8 @@
                         <span class="status-badge status-completed">Completed</span>
                     </div>
                     <h2 class="challenge-title">Clone Git Repository on Storage Server</h2>
-                    <p class="challenge-desc">SSH into the Storage Server, clone an existing bare repository from /opt/ to /usr/src/kodekloudrepos as the unprivileged user, and verify the cloned structure.</p>
+                    <p class="challenge-desc">SSH into the Storage Server, clone an existing bare repository from /opt/
+                        to /usr/src/kodekloudrepos as the unprivileged user, and verify the cloned structure.</p>
                 </div>
                 <div class="card-footer">
                     <span>Tech: Git / Linux</span>
@@ -316,7 +348,8 @@
                         <span class="status-badge status-completed">Completed</span>
                     </div>
                     <h2 class="challenge-title">Fork a Git Repository</h2>
-                    <p class="challenge-desc">Sign in to the Gitea server as a developer, locate the upstream repository sarah/story-blog, fork it under your personal namespace, and verify the copy creation.</p>
+                    <p class="challenge-desc">Sign in to the Gitea server as a developer, locate the upstream repository
+                        sarah/story-blog, fork it under your personal namespace, and verify the copy creation.</p>
                 </div>
                 <div class="card-footer">
                     <span>Tech: Git / Gitea</span>
@@ -331,7 +364,9 @@
                         <span class="status-badge status-completed">Completed</span>
                     </div>
                     <h2 class="challenge-title">Git Create Branches</h2>
-                    <p class="challenge-desc">SSH into the Storage Server, locate the target repository under /usr/src/kodekloudrepos, and create a new feature branch xfusioncorp_media from the master branch.</p>
+                    <p class="challenge-desc">SSH into the Storage Server, locate the target repository under
+                        /usr/src/kodekloudrepos, and create a new feature branch xfusioncorp_media from the master
+                        branch.</p>
                 </div>
                 <div class="card-footer">
                     <span>Tech: Git / Linux</span>
