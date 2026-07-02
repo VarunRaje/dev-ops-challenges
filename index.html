@@ -6,14 +6,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kode Kloud 100 Days of DevOps</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap');
+
         :root {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
+            --bg-color: #0b1329;
+            --card-bg: #131e3a;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --accent: #38bdf8;
             --success: #4ade80;
             --warning: #fbbf24;
+            --accent-glow: rgba(56, 189, 248, 0.15);
+            --border-color: #1e293b;
+            --search-bg: rgba(19, 30, 58, 0.6);
+            --search-focus-bg: rgba(19, 30, 58, 0.9);
+            --row-hover-bg: rgba(24, 37, 70, 0.8);
+            --radial-glow-1: rgba(56, 189, 248, 0.05);
+            --radial-glow-2: rgba(139, 92, 246, 0.03);
+            --badge-bg: rgba(56, 189, 248, 0.08);
+            --badge-border: rgba(56, 189, 248, 0.15);
+        }
+
+        body.light-mode {
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --accent: #0284c7;
+            --success: #16a34a;
+            --warning: #d97706;
+            --accent-glow: rgba(2, 132, 199, 0.1);
+            --border-color: #e2e8f0;
+            --search-bg: rgba(255, 255, 255, 0.8);
+            --search-focus-bg: #ffffff;
+            --row-hover-bg: rgba(241, 245, 249, 0.9);
+            --radial-glow-1: rgba(2, 132, 199, 0.03);
+            --radial-glow-2: rgba(79, 70, 229, 0.02);
+            --badge-bg: rgba(2, 132, 199, 0.05);
+            --badge-border: rgba(2, 132, 199, 0.1);
         }
 
         * {
@@ -23,133 +53,266 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg-color);
+            background-image: radial-gradient(circle at top right, var(--radial-glow-1), transparent 400px), 
+                              radial-gradient(circle at bottom left, var(--radial-glow-2), transparent 400px);
             color: var(--text-main);
             line-height: 1.6;
-            padding: 2rem;
+            padding: 3rem 2rem;
+            min-height: 100vh;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
+            position: relative;
         }
 
         header {
-            margin-bottom: 3rem;
+            margin-bottom: 3.5rem;
             text-align: center;
         }
 
         header h1 {
-            font-size: 2.5rem;
-            color: var(--accent);
-            margin-bottom: 0.5rem;
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--gradient-start, #38bdf8) 0%, var(--gradient-end, #8b5cf6) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.02em;
         }
 
         header p {
             color: var(--text-muted);
+            font-size: 1.1rem;
+            font-weight: 500;
         }
 
         .search-container {
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
+            position: relative;
         }
 
         .search-bar {
             width: 100%;
-            padding: 0.8rem 1.2rem;
-            border-radius: 8px;
-            border: 1px solid #334155;
-            background-color: var(--card-bg);
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            background-color: var(--search-bg);
+            backdrop-filter: blur(10px);
             color: var(--text-main);
-            font-size: 1rem;
+            font-size: 1.05rem;
             outline: none;
-            transition: border-color 0.2s;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         }
 
         .search-bar:focus {
             border-color: var(--accent);
+            box-shadow: 0 0 20px var(--accent-glow), 0 4px 30px rgba(0, 0, 0, 0.15);
+            background-color: var(--search-focus-bg);
         }
 
-        .challenge-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .challenge-card {
-            background-color: var(--card-bg);
-            border: 1px solid #334155;
-            border-radius: 12px;
-            padding: 1.5rem;
+        .challenge-list {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            transition: transform 0.2s, border-color 0.2s;
+            gap: 0.75rem;
+        }
+
+        .challenge-row {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 1rem 1.5rem;
+            display: grid;
+            grid-template-columns: 120px 240px 1fr 130px 80px 120px;
+            align-items: center;
+            gap: 1.5rem;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
             text-decoration: none;
             color: inherit;
         }
 
-        .challenge-card:hover {
-            transform: translateY(-4px);
+        .challenge-row:hover {
+            transform: translateX(6px);
             border-color: var(--accent);
+            background-color: var(--row-hover-bg);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
         }
 
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 1rem;
-        }
-
-        .challenge-num {
-            font-size: 0.85rem;
+        .row-num {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 0.05em;
             color: var(--accent);
-            font-weight: bold;
+            font-weight: 700;
+        }
+
+        .row-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .row-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            padding-right: 1.5rem;
+        }
+
+        .row-tech {
+            font-size: 0.85rem;
+        }
+
+        .tech-badge {
+            background-color: var(--badge-bg);
+            color: var(--accent);
+            padding: 0.25rem 0.6rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border: 1px solid var(--badge-border);
+            display: inline-block;
+            max-width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .row-time {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .row-status {
+            text-align: right;
         }
 
         .status-badge {
             font-size: 0.75rem;
-            padding: 0.25rem 0.6rem;
+            padding: 0.3rem 0.75rem;
             border-radius: 20px;
             font-weight: 600;
+            text-align: center;
+            display: inline-block;
+            width: 105px;
+            letter-spacing: 0.02em;
         }
 
         .status-completed {
-            background-color: rgba(74, 222, 128, 0.15);
+            background-color: rgba(74, 222, 128, 0.08);
             color: var(--success);
+            border: 1px solid rgba(74, 222, 128, 0.15);
         }
 
         .status-progress {
-            background-color: rgba(251, 191, 36, 0.15);
+            background-color: rgba(251, 191, 36, 0.08);
             color: var(--warning);
+            border: 1px solid rgba(251, 191, 36, 0.15);
         }
 
         .status-pending {
-            background-color: rgba(148, 163, 184, 0.15);
+            background-color: rgba(148, 163, 184, 0.08);
             color: var(--text-muted);
+            border: 1px solid rgba(148, 163, 184, 0.15);
         }
 
-        .challenge-title {
-            font-size: 1.25rem;
-            margin-bottom: 0.5rem;
+        /* Responsive Layouts */
+        @media (max-width: 992px) {
+            .challenge-row {
+                grid-template-columns: 110px 200px 1fr 110px 110px;
+                gap: 1rem;
+            }
+            .row-time {
+                display: none; /* Hide estimated time on tablets */
+            }
         }
 
-        .challenge-desc {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            flex-grow: 1;
-            margin-bottom: 1.5rem;
+        @media (max-width: 768px) {
+            .challenge-row {
+                grid-template-columns: 100px 180px 100px 110px;
+            }
+            .row-desc {
+                display: none; /* Hide description on mobile-tablets */
+            }
         }
 
-        .card-footer {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            border-top: 1px solid #334155;
-            padding-top: 0.75rem;
+        @media (max-width: 576px) {
+            .challenge-row {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.6rem;
+                padding: 1.2rem;
+            }
+            .challenge-row:hover {
+                transform: translateY(-2px);
+            }
+            .row-status {
+                text-align: left;
+                width: 100%;
+                margin-top: 0.25rem;
+                border-top: 1px solid rgba(255, 255, 255, 0.05);
+                padding-top: 0.6rem;
+            }
+        }
+
+        /* Theme Toggle Button */
+        .theme-toggle-btn {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 0.6rem;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
-            justify-content: space-between;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            outline: none;
+            z-index: 10;
+        }
+
+        .theme-toggle-btn:hover {
+            transform: scale(1.1) rotate(15deg);
+            border-color: var(--accent);
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        .theme-toggle-btn svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--text-main);
+            transition: transform 0.5s ease;
+        }
+
+        /* Theme icon toggling state display */
+        .sun-icon {
+            display: block;
+        }
+        .moon-icon {
+            display: none;
+        }
+
+        body.light-mode .sun-icon {
+            display: none;
+        }
+        body.light-mode .moon-icon {
+            display: block;
         }
     </style>
 </head>
@@ -157,453 +320,325 @@
 <body>
 
     <div class="container">
+        <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle Theme">
+            <!-- Sun Icon (shown in dark mode to switch to light mode) -->
+            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+            <!-- Moon Icon (shown in light mode to switch to dark mode) -->
+            <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        </button>
+
         <header>
             <h1>Kode Kloud DevOps Challenges Dashboard</h1>
-            <p>Learn Dev-Ops by 100 days of challenges</p>
+            <p>Learn DevOps by 100 days of challenges</p>
         </header>
 
         <div class="search-container">
             <input type="text" id="searchInput" class="search-bar"
-                placeholder="Search challenges by title or tech stack...">
+                placeholder="Search challenges by title, description or technology stack...">
         </div>
 
-        <div class="challenge-grid" id="challengeGrid">
+        <div class="challenge-list" id="challengeGrid">
 
-            <a href="challenges/01-linux-user-setup" class="challenge-card">
-                <div>
-                    <div class="card-header">
-                        <span class="challenge-num">Challenge 01</span>
-                        <span class="status-badge status-completed">Completed</span>
-                    </div>
-                    <h2 class="challenge-title">Linux User Setup with Non-Interactive Shell</h2>
-                    <p class="challenge-desc">Set up a Linux user with a non-interactive shell for automated tasks.</p>
-                </div>
-                <div class="card-footer">
-                    <span>Tech: Linux</span>
-                    <span>Est: 1h</span>
-                </div>
+            <a href="challenges/01-linux-user-setup" class="challenge-row">
+                <div class="row-num">Challenge 01</div>
+                <div class="row-title">Linux User Setup</div>
+                <div class="row-desc">Set up a Linux user with a non-interactive shell for automated tasks.</div>
+                <div class="row-tech"><span class="tech-badge">Linux</span></div>
+                <div class="row-time">1h</div>
+                <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/02-temporary-user-setup" class="challenge-card">
-                <div>
-                    <div class="card-header">
-                        <span class="challenge-num">Challenge 02</span>
-                        <span class="status-badge status-completed">Completed</span>
-                    </div>
-                    <h2 class="challenge-title">Temporary User Setup with Expiry</h2>
-                    <p class="challenge-desc">Create a temporary user account with an automatic expiry date for
-                        limited-time access.</p>
-                </div>
-                <div class="card-footer">
-                    <span>Tech: Linux</span>
-                    <span>Est: 1h</span>
-                </div>
+            <a href="challenges/02-temporary-user-setup" class="challenge-row">
+                <div class="row-num">Challenge 02</div>
+                <div class="row-title">Temporary User Setup</div>
+                <div class="row-desc">Create a temporary user account with an automatic expiry date.</div>
+                <div class="row-tech"><span class="tech-badge">Linux</span></div>
+                <div class="row-time">1h</div>
+                <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/03-secure-root-ssh" class="challenge-card">
-                <div>
-                    <div class="card-header">
-                        <span class="challenge-num">Challenge 03</span>
-                        <span class="status-badge status-completed">Completed</span>
-                    </div>
-                    <h2 class="challenge-title">Secure Root SSH Access</h2>
-                    <p class="challenge-desc">Disable direct root SSH login and configure servers to enforce administrative login accountability.</p>
-                </div>
-                <div class="card-footer">
-                    <span>Tech: Linux</span>
-                    <span>Est: 3h</span>
-                </div>
+            <a href="challenges/03-secure-root-ssh" class="challenge-row">
+                <div class="row-num">Challenge 03</div>
+                <div class="row-title">Secure Root SSH</div>
+                <div class="row-desc">Disable direct root SSH login and configure servers to enforce administrative login accountability.</div>
+                <div class="row-tech"><span class="tech-badge">Linux</span></div>
+                <div class="row-time">3h</div>
+                <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/04-script-execution-permissions" class="challenge-card">
-                <div>
-                    <div class="card-header">
-                        <span class="challenge-num">Challenge 04</span>
-                        <span class="status-badge status-completed">Completed</span>
-                    </div>
-                    <h2 class="challenge-title">Script Execution Permissions</h2>
-                    <p class="challenge-desc">Modify file permissions for a distributed script to grant read and execute access for all users using symbolic and numeric modes.</p>
-                </div>
-                <div class="card-footer">
-                    <span>Tech: Linux</span>
-                    <span>Est: 1h</span>
-                </div>
+            <a href="challenges/04-script-execution-permissions" class="challenge-row">
+                <div class="row-num">Challenge 04</div>
+                <div class="row-title">Script Permissions</div>
+                <div class="row-desc">Modify file permissions for a distributed script to grant read and execute access.</div>
+                <div class="row-tech"><span class="tech-badge">Linux</span></div>
+                <div class="row-time">1h</div>
+                <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/05-selinux-installation-and-configuration" class="challenge-card">
-                <div>
-                    <div class="card-header">
-                        <span class="challenge-num">Challenge 05</span>
-                        <span class="status-badge status-completed">Completed</span>
-                    </div>
-                    <h2 class="challenge-title">SELinux Installation and Configuration</h2>
-                    <p class="challenge-desc">Install essential SELinux packages on the App Server, and update the configuration file to permanently disable SELinux at system boot.</p>
-                </div>
-                <div class="card-footer">
-                    <span>Tech: Linux</span>
-                    <span>Est: 1h</span>
-                </div>
+            <a href="challenges/05-selinux-installation-and-configuration" class="challenge-row">
+                <div class="row-num">Challenge 05</div>
+                <div class="row-title">SELinux Configuration</div>
+                <div class="row-desc">Install essential SELinux packages and permanently disable SELinux at system boot.</div>
+                <div class="row-tech"><span class="tech-badge">Linux</span></div>
+                <div class="row-time">1h</div>
+                <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/06-create-a-cron-job" class="challenge-card">
-                <div>
-                    <div class="card-header">
-                        <span class="challenge-num">Challenge 06</span>
-                        <span class="status-badge status-completed">Completed</span>
-                    </div>
-                    <h2 class="challenge-title">Create a Cron Job</h2>
-                    <p class="challenge-desc">Install cronie package, enable and start crond, and configure a recurring root task to output text to a temporary directory every 5 minutes.</p>
-                </div>
-                <div class="card-footer">
-                    <span>Tech: Linux</span>
-                    <span>Est: 1h</span>
-                </div>
+            <a href="challenges/06-create-a-cron-job" class="challenge-row">
+                <div class="row-num">Challenge 06</div>
+                <div class="row-title">Create a Cron Job</div>
+                <div class="row-desc">Install cronie package, enable crond, and configure a recurring root task.</div>
+                <div class="row-tech"><span class="tech-badge">Linux</span></div>
+                <div class="row-time">1h</div>
+                <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/07-linux-ssh-authentication" class="challenge-card">
-                <div>
-                    <div class="card-header">
-                        <span class="challenge-num">Challenge 07</span>
-                        <span class="status-badge status-completed">Completed</span>
-                    </div>
-                    <h2 class="challenge-title">Linux SSH Authentication</h2>
-                    <p class="challenge-desc">Generate an RSA key pair on the Jump Host, and distribute it to all application servers using ssh-copy-id to enable password-less SSH access.</p>
-                </div>
-                <div class="card-footer">
-                    <span>Tech: Linux / SSH</span>
-                    <span>Est: 1h</span>
-                </div>
+            <a href="challenges/07-linux-ssh-authentication" class="challenge-row">
+                <div class="row-num">Challenge 07</div>
+                <div class="row-title">Linux SSH Auth</div>
+                <div class="row-desc">Generate RSA key pairs and distribute them to enable password-less SSH access.</div>
+                <div class="row-tech"><span class="tech-badge">Linux / SSH</span></div>
+                <div class="row-time">1h</div>
+                <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/08-install-ansible" class="challenge-card">
-                <div>
-                    <div class="card-header">
-                        <span class="challenge-num">Challenge 08</span>
-                        <span class="status-badge status-completed">Completed</span>
-                    </div>
-                    <h2 class="challenge-title">Install Ansible</h2>
-                    <p class="challenge-desc">Install Ansible 4.10.0 globally using pip3 on the Jump Host, and verify that the executable path is globally accessible to all users.</p>
-                </div>
-                <div class="card-footer">
-                    <span>Tech: Ansible / Python</span>
-                    <span>Est: 1h</span>
-                </div>
+            <a href="challenges/08-install-ansible" class="challenge-row">
+                <div class="row-num">Challenge 08</div>
+                <div class="row-title">Install Ansible</div>
+                <div class="row-desc">Install Ansible 4.10.0 globally using pip3 on the Jump Host.</div>
+                <div class="row-tech"><span class="tech-badge">Ansible / Python</span></div>
+                <div class="row-time">1h</div>
+                <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/09-mariadb-troubleshooting" class="challenge-card">
-                <div>
-                    <div class="card-header">
-                        <span class="challenge-num">Challenge 09</span>
-                        <span class="status-badge status-completed">Completed</span>
-                    </div>
-                    <h2 class="challenge-title">MariaDB Troubleshooting</h2>
-                    <p class="challenge-desc">Troubleshoot database startup failure by resolving permissions issues in the temporary runtime directory /run/mariadb for the mysql user.</p>
-                </div>
-                <div class="card-footer">
-                    <span>Tech: Database / Linux</span>
-                    <span>Est: 1h</span>
-                </div>
+            <a href="challenges/09-mariadb-troubleshooting" class="challenge-row">
+                <div class="row-num">Challenge 09</div>
+                <div class="row-title">MariaDB Troubleshooting</div>
+                <div class="row-desc">Troubleshoot database startup failure by resolving runtime directory permissions.</div>
+                <div class="row-tech"><span class="tech-badge">Database / Linux</span></div>
+                <div class="row-time">1h</div>
+                <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/10-linux-bash-scripts" class="challenge-card">
-                <div>
-                    <div class="card-header">
-                        <span class="challenge-num">Challenge 10</span>
-                        <span class="status-badge status-completed">Completed</span>
-                    </div>
-                    <h2 class="challenge-title">Linux Bash Scripts</h2>
-                    <p class="challenge-desc">Write an automated backup Bash script that compresses static site data, saves it locally, and secure-copies it to a remote backup server using password-less SSH keys.</p>
-                </div>
-                <div class="card-footer">
-                    <span>Tech: Bash / Linux</span>
-                    <span>Est: 1h</span>
-                </div>
+            <a href="challenges/10-linux-bash-scripts" class="challenge-row">
+                <div class="row-num">Challenge 10</div>
+                <div class="row-title">Linux Bash Scripts</div>
+                <div class="row-desc">Write an automated backup Bash script that compresses static site data and transfers it remotely.</div>
+                <div class="row-tech"><span class="tech-badge">Bash / Linux</span></div>
+                <div class="row-time">1h</div>
+                <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/11-install-and-configure-tomcat-server" class="challenge-card">
-                <div>
-                    <div class="card-header">
-                        <span class="challenge-num">Challenge 11</span>
-                        <span class="status-badge status-completed">Completed</span>
-                    </div>
-                    <h2 class="challenge-title">Install and Configure Tomcat Server</h2>
-                    <p class="challenge-desc">Install Apache Tomcat on App Server 1, configure it to run on port 8085, and deploy a Java ROOT.war application archive.</p>
-                </div>
-                <div class="card-footer">
-                    <span>Tech: Java / Tomcat</span>
-                    <span>Est: 1h</span>
-                </div>
+            <a href="challenges/11-install-and-configure-tomcat-server" class="challenge-row">
+                <div class="row-num">Challenge 11</div>
+                <div class="row-title">Install Tomcat Server</div>
+                <div class="row-desc">Install Apache Tomcat on App Server 1, change port to 8085, and deploy ROOT.war.</div>
+                <div class="row-tech"><span class="tech-badge">Java / Tomcat</span></div>
+                <div class="row-time">1h</div>
+                <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/12-linux-network-services" class="challenge-card">
-                <div>
-                    <div class="card-header">
-                        <span class="challenge-num">Challenge 12</span>
-                        <span class="status-badge status-completed">Completed</span>
-                    </div>
-                    <h2 class="challenge-title">Linux Network Services</h2>
-                    <p class="challenge-desc">Troubleshoot port conflicts using netstat and lsof, reconfigure sendmail to use its default SMTP port, start the Apache web service, and open ports in the firewall.</p>
-                </div>
-                <div class="card-footer">
-                    <span>Tech: Network / Linux</span>
-                    <span>Est: 1h</span>
-                </div>
+            <a href="challenges/12-linux-network-services" class="challenge-row">
+                <div class="row-num">Challenge 12</div>
+                <div class="row-title">Linux Network Services</div>
+                <div class="row-desc">Troubleshoot port conflicts, reconfigure sendmail SMTP port, and open firewall rules.</div>
+                <div class="row-tech"><span class="tech-badge">Network / Linux</span></div>
+                <div class="row-time">1h</div>
+                <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/13-iptables-installation-and-configuration" class="challenge-card">
-                <div>
-                    <div class="card-header">
-                        <span class="challenge-num">Challenge 13</span>
-                        <span class="status-badge status-completed">Completed</span>
-                    </div>
-                    <h2 class="challenge-title">IPtables Installation and Configuration</h2>
-                    <p class="challenge-desc">Install iptables-services, start and enable the daemon, and configure sequential rules to allow web traffic only from the Load Balancer IP while blocking all others.</p>
-                </div>
-                <div class="card-footer">
-                    <span>Tech: Security / Linux</span>
-                    <span>Est: 1h</span>
-                </div>
+            <a href="challenges/13-iptables-installation-and-configuration" class="challenge-row">
+                <div class="row-num">Challenge 13</div>
+                <div class="row-title">IPtables Configuration</div>
+                <div class="row-desc">Install iptables-services and configure rules to restrict access only to the Load Balancer.</div>
+                <div class="row-tech"><span class="tech-badge">Security / Linux</span></div>
+                <div class="row-time">1h</div>
+                <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/14-linux-process-troubleshooting" class="challenge-card">
-                <div>
-                    <div class="card-header">
-                        <span class="challenge-num">Challenge 14</span>
-                        <span class="status-badge status-completed">Completed</span>
-                    </div>
-                    <h2 class="challenge-title">Linux Process Troubleshooting</h2>
-                    <p class="challenge-desc">Diagnose web server port conflicts using netstat and process tracking, stop/disable conflicting processes like sendmail, and run httpd on port 5004.</p>
-                </div>
-                <div class="card-footer">
-                    <span>Tech: Linux</span>
-                    <span>Est: 1h</span>
-                </div>
+            <a href="challenges/14-linux-process-troubleshooting" class="challenge-row">
+                <div class="row-num">Challenge 14</div>
+                <div class="row-title">Process Troubleshooting</div>
+                <div class="row-desc">Diagnose web server port conflicts, disable sendmail, and run httpd on port 5004.</div>
+                <div class="row-tech"><span class="tech-badge">Linux</span></div>
+                <div class="row-time">1h</div>
+                <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/15-setup-ssl-for-nginx" class="challenge-card">
-                <div>
-                    <div class="card-header">
-                        <span class="challenge-num">Challenge 15</span>
-                        <span class="status-badge status-completed">Completed</span>
-                    </div>
-                    <h2 class="challenge-title">Setup SSL for Nginx</h2>
-                    <p class="challenge-desc">Install Nginx on App Server 1, configure SSL block on port 443 with self-signed certificate and key, and deploy a secure static welcome page.</p>
-                </div>
-                <div class="card-footer">
-                    <span>Tech: Nginx / SSL</span>
-                    <span>Est: 1h</span>
-                </div>
+            <a href="challenges/15-setup-ssl-for-nginx" class="challenge-row">
+                <div class="row-num">Challenge 15</div>
+                <div class="row-title">Setup SSL for Nginx</div>
+                <div class="row-desc">Install Nginx, configure SSL block on port 443 with self-signed certificate, and deploy a secure page.</div>
+                <div class="row-tech"><span class="tech-badge">Nginx / SSL</span></div>
+                <div class="row-time">1h</div>
+                <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/16-install-and-configure-nginx-as-an-lbr" class="challenge-card">
-                <div>
-                    <div class="card-header">
-                        <span class="challenge-num">Challenge 16</span>
-                        <span class="status-badge status-completed">Completed</span>
-                    </div>
-                    <h2 class="challenge-title">Install and Configure Nginx as an LBR</h2>
-                    <p class="challenge-desc">Install Nginx on the Load Balancer host, define upstream groups pointing to application servers, and configure http reverse proxy passing.</p>
-                </div>
-                <div class="card-footer">
-                    <span>Tech: Nginx / LBR</span>
-                    <span>Est: 1h</span>
-                </div>
+            <a href="challenges/16-install-and-configure-nginx-as-an-lbr" class="challenge-row">
+                <div class="row-num">Challenge 16</div>
+                <div class="row-title">Nginx as a Load Balancer</div>
+                <div class="row-desc">Install Nginx on the LB host, configure upstreams, and set up reverse proxy passing.</div>
+                <div class="row-tech"><span class="tech-badge">Nginx / LBR</span></div>
+                <div class="row-time">1h</div>
+                <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/17-install-and-configure-postgres" class="challenge-card">
-                <div>
-                    <div class="card-header">
-                        <span class="challenge-num">Challenge 17</span>
-                        <span class="status-badge status-completed">Completed</span>
-                    </div>
-                    <h2 class="challenge-title">Install and Configure PostgreSQL</h2>
-                    <p class="challenge-desc">Install PostgreSQL and configure it for use in a development environment.
-                    </p>
-                </div>
-                <div class="card-footer">
-                    <span>Tech: Linux</span>
-                    <span>Est: 1h</span>
-                </div>
+            <a href="challenges/17-install-and-configure-postgres" class="challenge-row">
+                <div class="row-num">Challenge 17</div>
+                <div class="row-title">Install PostgreSQL</div>
+                <div class="row-desc">Install PostgreSQL database engine and configure it for a development environment.</div>
+                <div class="row-tech"><span class="tech-badge">Linux</span></div>
+                <div class="row-time">1h</div>
+                <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/18-install-and-configure-mariadb" class="challenge-card">
-                <div>
-                    <div class="card-header">
-                        <span class="challenge-num">Challenge 18</span>
-                        <span class="status-badge status-completed">Completed</span>
-                    </div>
-                    <h2 class="challenge-title">Install and Configure MariaDB</h2>
-                    <p class="challenge-desc">Install and configure MariaDB and create a database for use in a
-                        development environment.</p>
-                </div>
-                <div class="card-footer">
-                    <span>Tech: Linux</span>
-                    <span>Est: 1h</span>
-                </div>
+            <a href="challenges/18-install-and-configure-mariadb" class="challenge-row">
+                <div class="row-num">Challenge 18</div>
+                <div class="row-title">Install MariaDB</div>
+                <div class="row-desc">Install and configure MariaDB database engine for use in a development workspace.</div>
+                <div class="row-tech"><span class="tech-badge">Linux</span></div>
+                <div class="row-time">1h</div>
+                <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/19-hosting-multiple-static-websites-on-apache" class="challenge-card">
-                <div>
-                    <div class="card-header">
-                        <span class="challenge-num">Challenge 19</span>
-                        <span class="status-badge status-completed">Completed</span>
-                    </div>
-                    <h2 class="challenge-title">Hosting Multiple Static Websites on Apache (Custom Port)</h2>
-                    <p class="challenge-desc">Install Apache on App Server 2, change the port to 5004, configure
-                        VirtualHost, and deploy official and apps site backups.</p>
-                </div>
-                <div class="card-footer">
-                    <span>Tech: Apache / Linux</span>
-                    <span>Est: 1h</span>
-                </div>
+            <a href="challenges/19-hosting-multiple-static-websites-on-apache" class="challenge-row">
+                <div class="row-num">Challenge 19</div>
+                <div class="row-title">Hosting Multiple Apache Sites</div>
+                <div class="row-desc">Install Apache on App Server 2, change the port to 5004, and set up VirtualHost configs.</div>
+                <div class="row-tech"><span class="tech-badge">Apache / Linux</span></div>
+                <div class="row-time">1h</div>
+                <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/20-configure-nginx-php-fpm-using-unix-sock" class="challenge-card">
-                <div>
-                    <div class="card-header">
-                        <span class="challenge-num">Challenge 20</span>
-                        <span class="status-badge status-completed">Completed</span>
-                    </div>
-                    <h2 class="challenge-title">Configure Nginx + PHP-FPM Using Unix Sock</h2>
-                    <p class="challenge-desc">Install Nginx and PHP-FPM 8.3 on App Server 2, and configure them to
-                        communicate over a high-performance Unix domain socket.</p>
-                </div>
-                <div class="card-footer">
-                    <span>Tech: Nginx / PHP / Linux</span>
-                    <span>Est: 1h</span>
-                </div>
+            <a href="challenges/20-configure-nginx-php-fpm-using-unix-sock" class="challenge-row">
+                <div class="row-num">Challenge 20</div>
+                <div class="row-title">Nginx + PHP-FPM Socket</div>
+                <div class="row-desc">Install Nginx and PHP-FPM 8.3 and configure high-performance communication over a Unix socket.</div>
+                <div class="row-tech"><span class="tech-badge">Nginx / PHP</span></div>
+                <div class="row-time">1h</div>
+                <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/21-set-up-git-repository-on-storage-server" class="challenge-card">
-                <div>
-                    <div class="card-header">
-                        <span class="challenge-num">Challenge 21</span>
-                        <span class="status-badge status-completed">Completed</span>
-                    </div>
-                    <h2 class="challenge-title">Set Up Git Repository on Storage Server</h2>
-                    <p class="challenge-desc">Install Git on the Storage Server, initialize a central bare repository at
-                        /opt/news.git, and verify the repository structure.</p>
-                </div>
-                <div class="card-footer">
-                    <span>Tech: Git / Linux</span>
-                    <span>Est: 1h</span>
-                </div>
+            <a href="challenges/21-set-up-git-repository-on-storage-server" class="challenge-row">
+                <div class="row-num">Challenge 21</div>
+                <div class="row-title">Set Up Git Repository</div>
+                <div class="row-desc">Install Git and initialize a central bare repository at /opt/news.git on Nautilus Storage.</div>
+                <div class="row-tech"><span class="tech-badge">Git / Linux</span></div>
+                <div class="row-time">1h</div>
+                <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/22-clone-git-repository-on-storage-server" class="challenge-card">
-                <div>
-                    <div class="card-header">
-                        <span class="challenge-num">Challenge 22</span>
-                        <span class="status-badge status-completed">Completed</span>
-                    </div>
-                    <h2 class="challenge-title">Clone Git Repository on Storage Server</h2>
-                    <p class="challenge-desc">SSH into the Storage Server, clone an existing bare repository from /opt/
-                        to /usr/src/kodekloudrepos as the unprivileged user, and verify the cloned structure.</p>
-                </div>
-                <div class="card-footer">
-                    <span>Tech: Git / Linux</span>
-                    <span>Est: 1h</span>
-                </div>
+            <a href="challenges/22-clone-git-repository-on-storage-server" class="challenge-row">
+                <div class="row-num">Challenge 22</div>
+                <div class="row-title">Clone Git Repository</div>
+                <div class="row-desc">Clone an existing bare repository from /opt to /usr/src/kodekloudrepos as an unprivileged user.</div>
+                <div class="row-tech"><span class="tech-badge">Git / Linux</span></div>
+                <div class="row-time">1h</div>
+                <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/23-fork-a-git-repository" class="challenge-card">
-                <div>
-                    <div class="card-header">
-                        <span class="challenge-num">Challenge 23</span>
-                        <span class="status-badge status-completed">Completed</span>
-                    </div>
-                    <h2 class="challenge-title">Fork a Git Repository</h2>
-                    <p class="challenge-desc">Sign in to the Gitea server as a developer, locate the upstream repository
-                        sarah/story-blog, fork it under your personal namespace, and verify the copy creation.</p>
-                </div>
-                <div class="card-footer">
-                    <span>Tech: Git / Gitea</span>
-                    <span>Est: 1h</span>
-                </div>
+            <a href="challenges/23-fork-a-git-repository" class="challenge-row">
+                <div class="row-num">Challenge 23</div>
+                <div class="row-title">Fork a Git Repository</div>
+                <div class="row-desc">Sign in to Gitea, locate upstream repo sarah/story-blog, and fork it under your namespace.</div>
+                <div class="row-tech"><span class="tech-badge">Git / Gitea</span></div>
+                <div class="row-time">1h</div>
+                <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/24-git-create-branches" class="challenge-card">
-                <div>
-                    <div class="card-header">
-                        <span class="challenge-num">Challenge 24</span>
-                        <span class="status-badge status-completed">Completed</span>
-                    </div>
-                    <h2 class="challenge-title">Git Create Branches</h2>
-                    <p class="challenge-desc">SSH into the Storage Server, locate the target repository under
-                        /usr/src/kodekloudrepos, and create a new feature branch xfusioncorp_media from the master
-                        branch.</p>
-                </div>
-                <div class="card-footer">
-                    <span>Tech: Git / Linux</span>
-                    <span>Est: 1h</span>
-                </div>
+            <a href="challenges/24-git-create-branches" class="challenge-row">
+                <div class="row-num">Challenge 24</div>
+                <div class="row-title">Git Create Branches</div>
+                <div class="row-desc">Create a new feature branch xfusioncorp_media from the master branch on Nautilus Storage.</div>
+                <div class="row-tech"><span class="tech-badge">Git / Linux</span></div>
+                <div class="row-time">1h</div>
+                <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/25-git-merge-branches" class="challenge-card">
-                <div>
-                    <div class="card-header">
-                        <span class="challenge-num">Challenge 25</span>
-                        <span class="status-badge status-completed">Completed</span>
-                    </div>
-                    <h2 class="challenge-title">Git Merge Branches</h2>
-                    <p class="challenge-desc">Create a new branch from master, copy a staging HTML file, commit the changes, merge it back into master, and push both branches to the remote repository.</p>
-                </div>
-                <div class="card-footer">
-                    <span>Tech: Git / Linux</span>
-                    <span>Est: 1h</span>
-                </div>
+            <a href="challenges/25-git-merge-branches" class="challenge-row">
+                <div class="row-num">Challenge 25</div>
+                <div class="row-title">Git Merge Branches</div>
+                <div class="row-desc">Create a feature branch, commit modifications, merge it back into master, and push to remote.</div>
+                <div class="row-tech"><span class="tech-badge">Git / Linux</span></div>
+                <div class="row-time">1h</div>
+                <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/26-git-manage-remotes" class="challenge-card">
-                <div>
-                    <div class="card-header">
-                        <span class="challenge-num">Challenge 26</span>
-                        <span class="status-badge status-completed">Completed</span>
-                    </div>
-                    <h2 class="challenge-title">Git Manage Remotes</h2>
-                    <p class="challenge-desc">Configure a new bare repository remote link on the Storage Server, commit a staging HTML file, and push changes to update the remote reference.</p>
-                </div>
-                <div class="card-footer">
-                    <span>Tech: Git / Linux</span>
-                    <span>Est: 1h</span>
-                </div>
+            <a href="challenges/26-git-manage-remotes" class="challenge-row">
+                <div class="row-num">Challenge 26</div>
+                <div class="row-title">Git Manage Remotes</div>
+                <div class="row-desc">Configure a new bare repository remote link on Nautilus Storage, commit, and push changes.</div>
+                <div class="row-tech"><span class="tech-badge">Git / Linux</span></div>
+                <div class="row-time">1h</div>
+                <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/27-git-revert-some-changes" class="challenge-card">
-                <div>
-                    <div class="card-header">
-                        <span class="challenge-num">Challenge 27</span>
-                        <span class="status-badge status-completed">Completed</span>
-                    </div>
-                    <h2 class="challenge-title">Git Revert Some Changes</h2>
-                    <p class="challenge-desc">Perform a safe repository rollback by reverting the latest commit of a target repository on the Storage Server while preserving history.</p>
-                </div>
-                <div class="card-footer">
-                    <span>Tech: Git / Linux</span>
-                    <span>Est: 1h</span>
-                </div>
+            <a href="challenges/27-git-revert-some-changes" class="challenge-row">
+                <div class="row-num">Challenge 27</div>
+                <div class="row-title">Git Revert Changes</div>
+                <div class="row-desc">Perform a safe repository rollback by reverting the latest commit while preserving historical log.</div>
+                <div class="row-tech"><span class="tech-badge">Git / Linux</span></div>
+                <div class="row-time">1h</div>
+                <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
+            </a>
+
+            <a href="challenges/28-git-cherry-pick" class="challenge-row">
+                <div class="row-num">Challenge 28</div>
+                <div class="row-title">Git Cherry Pick</div>
+                <div class="row-desc">Cherry-pick a specific commit from a feature branch onto the master branch on Nautilus Storage.</div>
+                <div class="row-tech"><span class="tech-badge">Git / Linux</span></div>
+                <div class="row-time">1h</div>
+                <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
+            </a>
+
+            <a href="challenges/29-manage-git-pull-requests" class="challenge-row">
+                <div class="row-num">Challenge 29</div>
+                <div class="row-title">Manage Git Pull Requests</div>
+                <div class="row-desc">Raise a Pull Request on Gitea as Max, add Tom as reviewer, and merge changes without branch deletion.</div>
+                <div class="row-tech"><span class="tech-badge">Git / Gitea</span></div>
+                <div class="row-time">1h</div>
+                <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
         </div>
     </div>
 
     <script>
-        // Simple client-side search functionality
+        // Highly responsive search filtering for row components
         document.getElementById('searchInput').addEventListener('keyup', function () {
             const searchValue = this.value.toLowerCase();
-            const cards = document.querySelectorAll('.challenge-card');
+            const rows = document.querySelectorAll('.challenge-row');
 
-            cards.forEach(card => {
-                const title = card.querySelector('.challenge-title').textContent.toLowerCase();
-                const desc = card.querySelector('.challenge-desc').textContent.toLowerCase();
-                const tech = card.querySelector('.card-footer').textContent.toLowerCase();
+            rows.forEach(row => {
+                const title = row.querySelector('.row-title').textContent.toLowerCase();
+                const desc = row.querySelector('.row-desc').textContent.toLowerCase();
+                const tech = row.querySelector('.row-tech').textContent.toLowerCase();
+                const num = row.querySelector('.row-num').textContent.toLowerCase();
 
-                if (title.includes(searchValue) || desc.includes(searchValue) || tech.includes(searchValue)) {
-                    card.style.display = "flex";
+                if (title.includes(searchValue) || desc.includes(searchValue) || tech.includes(searchValue) || num.includes(searchValue)) {
+                    row.style.display = ""; // Resets inline styling to allow CSS stylesheet/media queries to control display
                 } else {
-                    card.style.display = "none";
+                    row.style.display = "none";
                 }
             });
+        });
+
+        // Theme Toggle Logic
+        const themeToggleBtn = document.getElementById('themeToggle');
+        
+        // Check local storage for saved selection
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            document.body.classList.add('light-mode');
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+            if (document.body.classList.contains('light-mode')) {
+                localStorage.setItem('theme', 'light');
+            } else {
+                localStorage.setItem('theme', 'dark');
+            }
         });
     </script>
 </body>
