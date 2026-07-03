@@ -55,8 +55,8 @@
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg-color);
-            background-image: radial-gradient(circle at top right, var(--radial-glow-1), transparent 400px), 
-                              radial-gradient(circle at bottom left, var(--radial-glow-2), transparent 400px);
+            background-image: radial-gradient(circle at top right, var(--radial-glow-1), transparent 400px),
+                radial-gradient(circle at bottom left, var(--radial-glow-2), transparent 400px);
             color: var(--text-main);
             line-height: 1.6;
             padding: 3rem 2rem;
@@ -92,9 +92,15 @@
             font-weight: 500;
         }
 
-        .search-container {
+        .controls-container {
+            display: flex;
+            gap: 1rem;
             margin-bottom: 2.5rem;
-            position: relative;
+            align-items: center;
+        }
+
+        .search-wrapper {
+            flex-grow: 1;
         }
 
         .search-bar {
@@ -117,13 +123,63 @@
             background-color: var(--search-focus-bg);
         }
 
-        .challenge-list {
+        /* View Toggle Controls */
+        .view-toggle-container {
+            display: flex;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 0.25rem;
+            gap: 0.25rem;
+            align-self: stretch;
+            height: 52px;
+            align-items: center;
+        }
+
+        .view-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 0 1rem;
+            height: 100%;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .view-btn svg {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+        }
+
+        .view-btn:hover {
+            color: var(--text-main);
+        }
+
+        .view-btn.active {
+            background-color: var(--accent);
+            color: #0b1329;
+        }
+
+        body.light-mode .view-btn.active {
+            color: #ffffff;
+        }
+
+        /* --- List View Layout --- */
+        .challenge-container.list-view {
             display: flex;
             flex-direction: column;
             gap: 0.75rem;
         }
 
-        .challenge-row {
+        .challenge-container.list-view .challenge-item {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 10px;
@@ -137,14 +193,14 @@
             color: inherit;
         }
 
-        .challenge-row:hover {
+        .challenge-container.list-view .challenge-item:hover {
             transform: translateX(6px);
             border-color: var(--accent);
             background-color: var(--row-hover-bg);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
         }
 
-        .row-num {
+        .challenge-container.list-view .row-num {
             font-family: 'Outfit', sans-serif;
             font-size: 0.9rem;
             text-transform: uppercase;
@@ -153,14 +209,14 @@
             font-weight: 700;
         }
 
-        .row-title {
+        .challenge-container.list-view .row-title {
             font-family: 'Outfit', sans-serif;
             font-size: 1.05rem;
             font-weight: 600;
             color: var(--text-main);
         }
 
-        .row-desc {
+        .challenge-container.list-view .row-desc {
             color: var(--text-muted);
             font-size: 0.9rem;
             white-space: nowrap;
@@ -169,10 +225,114 @@
             padding-right: 1.5rem;
         }
 
-        .row-tech {
+        .challenge-container.list-view .row-tech {
             font-size: 0.85rem;
         }
 
+        .challenge-container.list-view .row-time {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .challenge-container.list-view .row-status {
+            text-align: right;
+        }
+
+        /* --- Card View Layout --- */
+        .challenge-container.card-view {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .challenge-container.card-view .challenge-item {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: grid;
+            grid-template-areas:
+                "num status"
+                "title title"
+                "desc desc"
+                "tech time";
+            grid-template-rows: auto auto 1fr auto;
+            grid-template-columns: 1fr auto;
+            gap: 0.8rem;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            color: inherit;
+            min-height: 220px;
+        }
+
+        .challenge-container.card-view .challenge-item:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+            background-color: var(--row-hover-bg);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .challenge-container.card-view .row-num {
+            grid-area: num;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent);
+            font-weight: 700;
+            align-self: center;
+        }
+
+        .challenge-container.card-view .row-title {
+            grid-area: title;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-top: 0.25rem;
+        }
+
+        .challenge-container.card-view .row-desc {
+            grid-area: desc;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 0.5rem;
+        }
+
+        .challenge-container.card-view .row-tech {
+            grid-area: tech;
+            align-self: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 0.75rem;
+            margin-top: 0.25rem;
+        }
+
+        body.light-mode .challenge-container.card-view .row-tech,
+        body.light-mode .challenge-container.card-view .row-time {
+            border-top-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .challenge-container.card-view .row-time {
+            grid-area: time;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            align-self: center;
+            text-align: right;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 0.75rem;
+            margin-top: 0.25rem;
+        }
+
+        .challenge-container.card-view .row-status {
+            grid-area: status;
+            text-align: right;
+            align-self: center;
+        }
+
+        /* Common Badges */
         .tech-badge {
             background-color: var(--badge-bg);
             color: var(--accent);
@@ -186,16 +346,6 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-        }
-
-        .row-time {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-
-        .row-status {
-            text-align: right;
         }
 
         .status-badge {
@@ -227,43 +377,67 @@
             border: 1px solid rgba(148, 163, 184, 0.15);
         }
 
-        /* Responsive Layouts */
+        /* Responsive Layouts (List View specifics) */
         @media (max-width: 992px) {
-            .challenge-row {
+            .challenge-container.list-view .challenge-item {
                 grid-template-columns: 110px 200px 1fr 110px 110px;
                 gap: 1rem;
             }
-            .row-time {
-                display: none; /* Hide estimated time on tablets */
+
+            .challenge-container.list-view .row-time {
+                display: none;
             }
         }
 
         @media (max-width: 768px) {
-            .challenge-row {
+            .challenge-container.list-view .challenge-item {
                 grid-template-columns: 100px 180px 100px 110px;
             }
-            .row-desc {
-                display: none; /* Hide description on mobile-tablets */
+
+            .challenge-container.list-view .row-desc {
+                display: none;
             }
         }
 
         @media (max-width: 576px) {
-            .challenge-row {
+            .controls-container {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.75rem;
+            }
+
+            .view-toggle-container {
+                align-self: flex-start;
+                width: 100%;
+            }
+
+            .view-btn {
+                flex-grow: 1;
+                justify-content: center;
+            }
+
+            .challenge-container.list-view .challenge-item {
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 0.6rem;
                 padding: 1.2rem;
             }
-            .challenge-row:hover {
+
+            .challenge-container.list-view .challenge-item:hover {
                 transform: translateY(-2px);
             }
-            .row-status {
+
+            .challenge-container.list-view .row-status {
                 text-align: left;
                 width: 100%;
                 margin-top: 0.25rem;
                 border-top: 1px solid rgba(255, 255, 255, 0.05);
                 padding-top: 0.6rem;
+            }
+
+            body.light-mode .challenge-container.list-view .row-status {
+                border-top-color: rgba(0, 0, 0, 0.05);
             }
         }
 
@@ -300,10 +474,10 @@
             transition: transform 0.5s ease;
         }
 
-        /* Theme icon toggling state display */
         .sun-icon {
             display: block;
         }
+
         .moon-icon {
             display: none;
         }
@@ -311,8 +485,50 @@
         body.light-mode .sun-icon {
             display: none;
         }
-        body.light-mode .moon-icon {
+
+        body.light-mode .theme-toggle-btn .moon-icon {
             display: block;
+        }
+
+        body.light-mode .theme-toggle-btn .moon-icon {
+            display: block;
+        }
+
+        /* Header Contact Link */
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1.2rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 0.45rem 1.2rem;
+            border-radius: 20px;
+            background-color: var(--badge-bg);
+            border: 1px solid var(--badge-border);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-link svg {
+            width: 15px;
+            height: 15px;
+            stroke: currentColor;
+            fill: none;
+        }
+
+        .contact-link:hover {
+            background-color: var(--accent);
+            color: #0b1329;
+            box-shadow: 0 0 15px var(--accent-glow);
+            transform: translateY(-1px);
+        }
+
+        body.light-mode .contact-link:hover {
+            color: #ffffff;
         }
     </style>
 </head>
@@ -321,25 +537,67 @@
 
     <div class="container">
         <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle Theme">
-            <!-- Sun Icon (shown in dark mode to switch to light mode) -->
-            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
-            <!-- Moon Icon (shown in light mode to switch to dark mode) -->
-            <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+            <!-- Sun Icon -->
+            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="4" />
+                <path
+                    d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+            </svg>
+            <!-- Moon Icon -->
+            <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+            </svg>
         </button>
 
         <header>
             <h1>Kode Kloud DevOps Challenges Dashboard</h1>
             <p>Learn DevOps by 100 days of challenges</p>
+            <a href="contact" class="contact-link">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                    <circle cx="12" cy="7" r="4" />
+                </svg>
+                <span>Contact Me</span>
+            </a>
         </header>
 
-        <div class="search-container">
-            <input type="text" id="searchInput" class="search-bar"
-                placeholder="Search challenges by title, description or technology stack...">
+        <div class="controls-container">
+            <div class="search-wrapper">
+                <input type="text" id="searchInput" class="search-bar"
+                    placeholder="Search challenges by title, description or technology stack...">
+            </div>
+            <div class="view-toggle-container">
+                <button id="listViewBtn" class="view-btn active" aria-label="List View">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="8" y1="6" x2="21" y2="6" />
+                        <line x1="8" y1="12" x2="21" y2="12" />
+                        <line x1="8" y1="18" x2="21" y2="18" />
+                        <line x1="3" y1="6" x2="3.01" y2="6" />
+                        <line x1="3" y1="12" x2="3.01" y2="12" />
+                        <line x1="3" y1="18" x2="3.01" y2="18" />
+                    </svg>
+                    <span>List</span>
+                </button>
+                <button id="gridViewBtn" class="view-btn" aria-label="Grid View">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="7" height="7" />
+                        <rect x="14" y="3" width="7" height="7" />
+                        <rect x="14" y="14" width="7" height="7" />
+                        <rect x="3" y="14" width="7" height="7" />
+                    </svg>
+                    <span>Grid</span>
+                </button>
+            </div>
         </div>
 
-        <div class="challenge-list" id="challengeGrid">
+        <div class="challenge-container list-view" id="challengeGrid">
 
-            <a href="challenges/01-linux-user-setup" class="challenge-row">
+            <a href="challenges/01-linux-user-setup" class="challenge-item">
                 <div class="row-num">Challenge 01</div>
                 <div class="row-title">Linux User Setup</div>
                 <div class="row-desc">Set up a Linux user with a non-interactive shell for automated tasks.</div>
@@ -348,7 +606,7 @@
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/02-temporary-user-setup" class="challenge-row">
+            <a href="challenges/02-temporary-user-setup" class="challenge-item">
                 <div class="row-num">Challenge 02</div>
                 <div class="row-title">Temporary User Setup</div>
                 <div class="row-desc">Create a temporary user account with an automatic expiry date.</div>
@@ -357,34 +615,37 @@
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/03-secure-root-ssh" class="challenge-row">
+            <a href="challenges/03-secure-root-ssh" class="challenge-item">
                 <div class="row-num">Challenge 03</div>
                 <div class="row-title">Secure Root SSH</div>
-                <div class="row-desc">Disable direct root SSH login and configure servers to enforce administrative login accountability.</div>
+                <div class="row-desc">Disable direct root SSH login and configure servers to enforce administrative
+                    login accountability.</div>
                 <div class="row-tech"><span class="tech-badge">Linux</span></div>
                 <div class="row-time">3h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/04-script-execution-permissions" class="challenge-row">
+            <a href="challenges/04-script-execution-permissions" class="challenge-item">
                 <div class="row-num">Challenge 04</div>
                 <div class="row-title">Script Permissions</div>
-                <div class="row-desc">Modify file permissions for a distributed script to grant read and execute access.</div>
+                <div class="row-desc">Modify file permissions for a distributed script to grant read and execute access.
+                </div>
                 <div class="row-tech"><span class="tech-badge">Linux</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/05-selinux-installation-and-configuration" class="challenge-row">
+            <a href="challenges/05-selinux-installation-and-configuration" class="challenge-item">
                 <div class="row-num">Challenge 05</div>
                 <div class="row-title">SELinux Configuration</div>
-                <div class="row-desc">Install essential SELinux packages and permanently disable SELinux at system boot.</div>
+                <div class="row-desc">Install essential SELinux packages and permanently disable SELinux at system boot.
+                </div>
                 <div class="row-tech"><span class="tech-badge">Linux</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/06-create-a-cron-job" class="challenge-row">
+            <a href="challenges/06-create-a-cron-job" class="challenge-item">
                 <div class="row-num">Challenge 06</div>
                 <div class="row-title">Create a Cron Job</div>
                 <div class="row-desc">Install cronie package, enable crond, and configure a recurring root task.</div>
@@ -393,16 +654,17 @@
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/07-linux-ssh-authentication" class="challenge-row">
+            <a href="challenges/07-linux-ssh-authentication" class="challenge-item">
                 <div class="row-num">Challenge 07</div>
                 <div class="row-title">Linux SSH Auth</div>
-                <div class="row-desc">Generate RSA key pairs and distribute them to enable password-less SSH access.</div>
+                <div class="row-desc">Generate RSA key pairs and distribute them to enable password-less SSH access.
+                </div>
                 <div class="row-tech"><span class="tech-badge">Linux / SSH</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/08-install-ansible" class="challenge-row">
+            <a href="challenges/08-install-ansible" class="challenge-item">
                 <div class="row-num">Challenge 08</div>
                 <div class="row-title">Install Ansible</div>
                 <div class="row-desc">Install Ansible 4.10.0 globally using pip3 on the Jump Host.</div>
@@ -411,199 +673,221 @@
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/09-mariadb-troubleshooting" class="challenge-row">
+            <a href="challenges/09-mariadb-troubleshooting" class="challenge-item">
                 <div class="row-num">Challenge 09</div>
                 <div class="row-title">MariaDB Troubleshooting</div>
-                <div class="row-desc">Troubleshoot database startup failure by resolving runtime directory permissions.</div>
+                <div class="row-desc">Troubleshoot database startup failure by resolving runtime directory permissions.
+                </div>
                 <div class="row-tech"><span class="tech-badge">Database / Linux</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/10-linux-bash-scripts" class="challenge-row">
+            <a href="challenges/10-linux-bash-scripts" class="challenge-item">
                 <div class="row-num">Challenge 10</div>
                 <div class="row-title">Linux Bash Scripts</div>
-                <div class="row-desc">Write an automated backup Bash script that compresses static site data and transfers it remotely.</div>
+                <div class="row-desc">Write an automated backup Bash script that compresses static site data and
+                    transfers it remotely.</div>
                 <div class="row-tech"><span class="tech-badge">Bash / Linux</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/11-install-and-configure-tomcat-server" class="challenge-row">
+            <a href="challenges/11-install-and-configure-tomcat-server" class="challenge-item">
                 <div class="row-num">Challenge 11</div>
                 <div class="row-title">Install Tomcat Server</div>
-                <div class="row-desc">Install Apache Tomcat on App Server 1, change port to 8085, and deploy ROOT.war.</div>
+                <div class="row-desc">Install Apache Tomcat on App Server 1, change port to 8085, and deploy ROOT.war.
+                </div>
                 <div class="row-tech"><span class="tech-badge">Java / Tomcat</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/12-linux-network-services" class="challenge-row">
+            <a href="challenges/12-linux-network-services" class="challenge-item">
                 <div class="row-num">Challenge 12</div>
                 <div class="row-title">Linux Network Services</div>
-                <div class="row-desc">Troubleshoot port conflicts, reconfigure sendmail SMTP port, and open firewall rules.</div>
+                <div class="row-desc">Troubleshoot port conflicts, reconfigure sendmail SMTP port, and open firewall
+                    rules.</div>
                 <div class="row-tech"><span class="tech-badge">Network / Linux</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/13-iptables-installation-and-configuration" class="challenge-row">
+            <a href="challenges/13-iptables-installation-and-configuration" class="challenge-item">
                 <div class="row-num">Challenge 13</div>
                 <div class="row-title">IPtables Configuration</div>
-                <div class="row-desc">Install iptables-services and configure rules to restrict access only to the Load Balancer.</div>
+                <div class="row-desc">Install iptables-services and configure rules to restrict access only to the Load
+                    Balancer.</div>
                 <div class="row-tech"><span class="tech-badge">Security / Linux</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/14-linux-process-troubleshooting" class="challenge-row">
+            <a href="challenges/14-linux-process-troubleshooting" class="challenge-item">
                 <div class="row-num">Challenge 14</div>
                 <div class="row-title">Process Troubleshooting</div>
-                <div class="row-desc">Diagnose web server port conflicts, disable sendmail, and run httpd on port 5004.</div>
+                <div class="row-desc">Diagnose web server port conflicts, disable sendmail, and run httpd on port 5004.
+                </div>
                 <div class="row-tech"><span class="tech-badge">Linux</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/15-setup-ssl-for-nginx" class="challenge-row">
+            <a href="challenges/15-setup-ssl-for-nginx" class="challenge-item">
                 <div class="row-num">Challenge 15</div>
                 <div class="row-title">Setup SSL for Nginx</div>
-                <div class="row-desc">Install Nginx, configure SSL block on port 443 with self-signed certificate, and deploy a secure page.</div>
+                <div class="row-desc">Install Nginx, configure SSL block on port 443 with self-signed certificate, and
+                    deploy a secure page.</div>
                 <div class="row-tech"><span class="tech-badge">Nginx / SSL</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/16-install-and-configure-nginx-as-an-lbr" class="challenge-row">
+            <a href="challenges/16-install-and-configure-nginx-as-an-lbr" class="challenge-item">
                 <div class="row-num">Challenge 16</div>
                 <div class="row-title">Nginx as a Load Balancer</div>
-                <div class="row-desc">Install Nginx on the LB host, configure upstreams, and set up reverse proxy passing.</div>
+                <div class="row-desc">Install Nginx on the LB host, configure upstreams, and set up reverse proxy
+                    passing.</div>
                 <div class="row-tech"><span class="tech-badge">Nginx / LBR</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/17-install-and-configure-postgres" class="challenge-row">
+            <a href="challenges/17-install-and-configure-postgres" class="challenge-item">
                 <div class="row-num">Challenge 17</div>
                 <div class="row-title">Install PostgreSQL</div>
-                <div class="row-desc">Install PostgreSQL database engine and configure it for a development environment.</div>
+                <div class="row-desc">Install PostgreSQL database engine and configure it for a development environment.
+                </div>
                 <div class="row-tech"><span class="tech-badge">Linux</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/18-install-and-configure-mariadb" class="challenge-row">
+            <a href="challenges/18-install-and-configure-mariadb" class="challenge-item">
                 <div class="row-num">Challenge 18</div>
                 <div class="row-title">Install MariaDB</div>
-                <div class="row-desc">Install and configure MariaDB database engine for use in a development workspace.</div>
+                <div class="row-desc">Install and configure MariaDB database engine for use in a development workspace.
+                </div>
                 <div class="row-tech"><span class="tech-badge">Linux</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/19-hosting-multiple-static-websites-on-apache" class="challenge-row">
+            <a href="challenges/19-hosting-multiple-static-websites-on-apache" class="challenge-item">
                 <div class="row-num">Challenge 19</div>
                 <div class="row-title">Hosting Multiple Apache Sites</div>
-                <div class="row-desc">Install Apache on App Server 2, change the port to 5004, and set up VirtualHost configs.</div>
+                <div class="row-desc">Install Apache on App Server 2, change the port to 5004, and set up VirtualHost
+                    configs.</div>
                 <div class="row-tech"><span class="tech-badge">Apache / Linux</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/20-configure-nginx-php-fpm-using-unix-sock" class="challenge-row">
+            <a href="challenges/20-configure-nginx-php-fpm-using-unix-sock" class="challenge-item">
                 <div class="row-num">Challenge 20</div>
                 <div class="row-title">Nginx + PHP-FPM Socket</div>
-                <div class="row-desc">Install Nginx and PHP-FPM 8.3 and configure high-performance communication over a Unix socket.</div>
+                <div class="row-desc">Install Nginx and PHP-FPM 8.3 and configure high-performance communication over a
+                    Unix socket.</div>
                 <div class="row-tech"><span class="tech-badge">Nginx / PHP</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/21-set-up-git-repository-on-storage-server" class="challenge-row">
+            <a href="challenges/21-set-up-git-repository-on-storage-server" class="challenge-item">
                 <div class="row-num">Challenge 21</div>
                 <div class="row-title">Set Up Git Repository</div>
-                <div class="row-desc">Install Git and initialize a central bare repository at /opt/news.git on Nautilus Storage.</div>
+                <div class="row-desc">Install Git and initialize a central bare repository at /opt/news.git on Nautilus
+                    Storage.</div>
                 <div class="row-tech"><span class="tech-badge">Git / Linux</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/22-clone-git-repository-on-storage-server" class="challenge-row">
+            <a href="challenges/22-clone-git-repository-on-storage-server" class="challenge-item">
                 <div class="row-num">Challenge 22</div>
                 <div class="row-title">Clone Git Repository</div>
-                <div class="row-desc">Clone an existing bare repository from /opt to /usr/src/kodekloudrepos as an unprivileged user.</div>
+                <div class="row-desc">Clone an existing bare repository from /opt to /usr/src/kodekloudrepos as an
+                    unprivileged user.</div>
                 <div class="row-tech"><span class="tech-badge">Git / Linux</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/23-fork-a-git-repository" class="challenge-row">
+            <a href="challenges/23-fork-a-git-repository" class="challenge-item">
                 <div class="row-num">Challenge 23</div>
                 <div class="row-title">Fork a Git Repository</div>
-                <div class="row-desc">Sign in to Gitea, locate upstream repo sarah/story-blog, and fork it under your namespace.</div>
+                <div class="row-desc">Sign in to Gitea, locate upstream repo sarah/story-blog, and fork it under your
+                    namespace.</div>
                 <div class="row-tech"><span class="tech-badge">Git / Gitea</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/24-git-create-branches" class="challenge-row">
+            <a href="challenges/24-git-create-branches" class="challenge-item">
                 <div class="row-num">Challenge 24</div>
                 <div class="row-title">Git Create Branches</div>
-                <div class="row-desc">Create a new feature branch xfusioncorp_media from the master branch on Nautilus Storage.</div>
+                <div class="row-desc">Create a new feature branch xfusioncorp_media from the master branch on Nautilus
+                    Storage.</div>
                 <div class="row-tech"><span class="tech-badge">Git / Linux</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/25-git-merge-branches" class="challenge-row">
+            <a href="challenges/25-git-merge-branches" class="challenge-item">
                 <div class="row-num">Challenge 25</div>
                 <div class="row-title">Git Merge Branches</div>
-                <div class="row-desc">Create a feature branch, commit modifications, merge it back into master, and push to remote.</div>
+                <div class="row-desc">Create a feature branch, commit modifications, merge it back into master, and push
+                    to remote.</div>
                 <div class="row-tech"><span class="tech-badge">Git / Linux</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/26-git-manage-remotes" class="challenge-row">
+            <a href="challenges/26-git-manage-remotes" class="challenge-item">
                 <div class="row-num">Challenge 26</div>
                 <div class="row-title">Git Manage Remotes</div>
-                <div class="row-desc">Configure a new bare repository remote link on Nautilus Storage, commit, and push changes.</div>
+                <div class="row-desc">Configure a new bare repository remote link on Nautilus Storage, commit, and push
+                    changes.</div>
                 <div class="row-tech"><span class="tech-badge">Git / Linux</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/27-git-revert-some-changes" class="challenge-row">
+            <a href="challenges/27-git-revert-some-changes" class="challenge-item">
                 <div class="row-num">Challenge 27</div>
                 <div class="row-title">Git Revert Changes</div>
-                <div class="row-desc">Perform a safe repository rollback by reverting the latest commit while preserving historical log.</div>
+                <div class="row-desc">Perform a safe repository rollback by reverting the latest commit while preserving
+                    historical log.</div>
                 <div class="row-tech"><span class="tech-badge">Git / Linux</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/28-git-cherry-pick" class="challenge-row">
+            <a href="challenges/28-git-cherry-pick" class="challenge-item">
                 <div class="row-num">Challenge 28</div>
                 <div class="row-title">Git Cherry Pick</div>
-                <div class="row-desc">Cherry-pick a specific commit from a feature branch onto the master branch on Nautilus Storage.</div>
+                <div class="row-desc">Cherry-pick a specific commit from a feature branch onto the master branch on
+                    Nautilus Storage.</div>
                 <div class="row-tech"><span class="tech-badge">Git / Linux</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/29-manage-git-pull-requests" class="challenge-row">
+            <a href="challenges/29-manage-git-pull-requests" class="challenge-item">
                 <div class="row-num">Challenge 29</div>
                 <div class="row-title">Manage Git Pull Requests</div>
-                <div class="row-desc">Raise a Pull Request on Gitea as Max, add Tom as reviewer, and merge changes without branch deletion.</div>
+                <div class="row-desc">Raise a Pull Request on Gitea as Max, add Tom as reviewer, and merge changes
+                    without branch deletion.</div>
                 <div class="row-tech"><span class="tech-badge">Git / Gitea</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/30-git-hard-reset" class="challenge-row">
+            <a href="challenges/30-git-hard-reset" class="challenge-item">
                 <div class="row-num">Challenge 30</div>
                 <div class="row-title">Git Hard Reset</div>
-                <div class="row-desc">Revert a repository on Nautilus Storage to a previous commit using git reset --hard to discard unwanted test changes.</div>
+                <div class="row-desc">Revert a repository on Nautilus Storage to a previous commit using git reset
+                    --hard to discard unwanted test changes.</div>
                 <div class="row-tech"><span class="tech-badge">Git / Linux</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
@@ -613,28 +897,28 @@
     </div>
 
     <script>
-        // Highly responsive search filtering for row components
+        // Highly responsive search filtering for item components
         document.getElementById('searchInput').addEventListener('keyup', function () {
             const searchValue = this.value.toLowerCase();
-            const rows = document.querySelectorAll('.challenge-row');
+            const items = document.querySelectorAll('.challenge-item');
 
-            rows.forEach(row => {
-                const title = row.querySelector('.row-title').textContent.toLowerCase();
-                const desc = row.querySelector('.row-desc').textContent.toLowerCase();
-                const tech = row.querySelector('.row-tech').textContent.toLowerCase();
-                const num = row.querySelector('.row-num').textContent.toLowerCase();
+            items.forEach(item => {
+                const title = item.querySelector('.row-title').textContent.toLowerCase();
+                const desc = item.querySelector('.row-desc').textContent.toLowerCase();
+                const tech = item.querySelector('.row-tech').textContent.toLowerCase();
+                const num = item.querySelector('.row-num').textContent.toLowerCase();
 
                 if (title.includes(searchValue) || desc.includes(searchValue) || tech.includes(searchValue) || num.includes(searchValue)) {
-                    row.style.display = ""; // Resets inline styling to allow CSS stylesheet/media queries to control display
+                    item.style.display = ""; // Resets inline styling to allow CSS stylesheet/media queries to control display
                 } else {
-                    row.style.display = "none";
+                    item.style.display = "none";
                 }
             });
         });
 
         // Theme Toggle Logic
         const themeToggleBtn = document.getElementById('themeToggle');
-        
+
         // Check local storage for saved selection
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'light') {
@@ -648,6 +932,39 @@
             } else {
                 localStorage.setItem('theme', 'dark');
             }
+        });
+
+        // View Toggle Logic
+        const listViewBtn = document.getElementById('listViewBtn');
+        const gridViewBtn = document.getElementById('gridViewBtn');
+        const challengeContainer = document.getElementById('challengeGrid');
+
+        // Load saved view or default to list-view
+        const savedView = localStorage.getItem('view') || 'list-view';
+        if (savedView === 'card-view') {
+            challengeContainer.classList.remove('list-view');
+            challengeContainer.classList.add('card-view');
+            listViewBtn.classList.remove('active');
+            gridViewBtn.classList.add('active');
+        } else {
+            challengeContainer.classList.remove('card-view');
+            challengeContainer.classList.add('list-view');
+            gridViewBtn.classList.remove('active');
+            listViewBtn.classList.add('active');
+        }
+
+        listViewBtn.addEventListener('click', () => {
+            challengeContainer.classList.replace('card-view', 'list-view');
+            gridViewBtn.classList.remove('active');
+            listViewBtn.classList.add('active');
+            localStorage.setItem('view', 'list-view');
+        });
+
+        gridViewBtn.addEventListener('click', () => {
+            challengeContainer.classList.replace('list-view', 'card-view');
+            listViewBtn.classList.remove('active');
+            gridViewBtn.classList.add('active');
+            localStorage.setItem('view', 'card-view');
         });
     </script>
 </body>
