@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps Challenge Viewer</title>
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" id="prism-theme">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap');
+
+        :root {
+            --bg-color: #0b1329;
+            --card-bg: #131e3a;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --success: #4ade80;
+            --warning: #fbbf24;
+            --error: #f87171;
+            --accent-glow: rgba(56, 189, 248, 0.15);
+            --border-color: #1e293b;
+            --row-hover-bg: rgba(24, 37, 70, 0.8);
+            --radial-glow-1: rgba(56, 189, 248, 0.05);
+            --radial-glow-2: rgba(139, 92, 246, 0.03);
+            
+            /* Alert Colors (Dark Mode) */
+            --note-bg: rgba(56, 189, 248, 0.1);
+            --note-border: rgba(56, 189, 248, 0.3);
+            --tip-bg: rgba(74, 222, 128, 0.1);
+            --tip-border: rgba(74, 222, 128, 0.3);
+            --important-bg: rgba(167, 139, 250, 0.1);
+            --important-border: rgba(167, 139, 250, 0.3);
+            --warning-bg: rgba(251, 191, 36, 0.1);
+            --warning-border: rgba(251, 191, 36, 0.3);
+            --caution-bg: rgba(248, 113, 113, 0.1);
+            --caution-border: rgba(248, 113, 113, 0.3);
+        }
+
+        body.light-mode {
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --accent: #0284c7;
+            --success: #16a34a;
+            --warning: #d97706;
+            --error: #dc2626;
+            --accent-glow: rgba(2, 132, 199, 0.1);
+            --border-color: #e2e8f0;
+            --row-hover-bg: rgba(241, 245, 249, 0.9);
+            --radial-glow-1: rgba(2, 132, 199, 0.03);
+            --radial-glow-2: rgba(79, 70, 229, 0.02);
+
+            /* Alert Colors (Light Mode) */
+            --note-bg: #f0f9ff;
+            --note-border: #bae6fd;
+            --tip-bg: #f0fdf4;
+            --tip-border: #bbf7d0;
+            --important-bg: #f5f3ff;
+            --important-border: #ddd6fe;
+            --warning-bg: #fffbeb;
+            --warning-border: #fde68a;
+            --caution-bg: #fef2f2;
+            --caution-border: #fca5a5;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            background-image: radial-gradient(circle at top right, var(--radial-glow-1), transparent 400px),
+                radial-gradient(circle at bottom left, var(--radial-glow-2), transparent 400px);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 3rem 2rem;
+            min-height: 100vh;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* Top navigation and back button */
+        .nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1rem;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.2s ease;
+        }
+
+        .back-btn:hover {
+            color: var(--accent);
+        }
+
+        .back-btn svg {
+            width: 20px;
+            height: 20px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        /* Theme Toggle Button */
+        .theme-toggle-btn {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 0.6rem;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .theme-toggle-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            box-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        .theme-toggle-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+        }
+
+        /* Sun icon configuration */
+        .theme-toggle-btn .sun {
+            display: block;
+        }
+
+        .theme-toggle-btn .moon {
+            display: none;
+        }
+
+        body.light-mode .theme-toggle-btn .sun {
+            display: none;
+        }
+
+        body.light-mode .theme-toggle-btn .moon {
+            display: block;
+        }
+
+        /* Markdown Rendering Styles */
+        .content-area {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 3rem;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Loader */
+        .loader {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 5rem 0;
+            color: var(--text-muted);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(56, 189, 248, 0.1);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 1s infinite linear;
+            margin-bottom: 1rem;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Markdown elements formatting */
+        .markdown-body h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.25;
+            color: var(--text-main);
+        }
+
+        .markdown-body h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.3rem;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-main);
+        }
+
+        .markdown-body h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 600;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-main);
+        }
+
+        .markdown-body p {
+            margin-bottom: 1.2rem;
+            color: var(--text-main);
+            opacity: 0.9;
+        }
+
+        .markdown-body ul, .markdown-body ol {
+            margin-bottom: 1.2rem;
+            padding-left: 2rem;
+        }
+
+        .markdown-body li {
+            margin-bottom: 0.5rem;
+        }
+
+        .markdown-body a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .markdown-body a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive, beautiful images */
+        .markdown-body img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            margin: 1.5rem 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            display: block;
+        }
+
+        /* horizontal rules */
+        .markdown-body hr {
+            height: 1px;
+            background-color: var(--border-color);
+            border: none;
+            margin: 2.5rem 0;
+        }
+
+        /* Inline code styling */
+        .markdown-body :not(pre) > code {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: rgba(255, 255, 255, 0.07);
+            color: var(--accent);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        body.light-mode .markdown-body :not(pre) > code {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        /* Preformatted code block wrapper */
+        .markdown-body pre {
+            background-color: #1e293b !important; /* Always dark syntax block */
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.2rem;
+            margin-bottom: 1.5rem;
+            overflow-x: auto;
+            position: relative;
+        }
+
+        .markdown-body pre code {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            background: transparent;
+            padding: 0;
+            border-radius: 0;
+            color: #f8fafc;
+        }
+
+        /* Tables */
+        .markdown-body table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .markdown-body th, .markdown-body td {
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border-color);
+            text-align: left;
+        }
+
+        .markdown-body th {
+            background-color: rgba(255, 255, 255, 0.03);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+        }
+
+        body.light-mode .markdown-body th {
+            background-color: rgba(0, 0, 0, 0.02);
+        }
+
+        .markdown-body tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.01);
+        }
+
+        /* Alert blocks styling */
+        .alert-block {
+            border-left: 4px solid transparent;
+            border-radius: 6px;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .alert-block .alert-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+
+        .alert-block .alert-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .alert-block .alert-icon svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        .alert-block .alert-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Specific Alert Types */
+        .alert-block.alert-note {
+            background-color: var(--note-bg);
+            border-color: var(--accent);
+            color: var(--text-main);
+        }
+        .alert-block.alert-note .alert-header {
+            color: var(--accent);
+        }
+
+        .alert-block.alert-tip {
+            background-color: var(--tip-bg);
+            border-color: var(--success);
+            color: var(--text-main);
+        }
+        .alert-block.alert-tip .alert-header {
+            color: var(--success);
+        }
+
+        .alert-block.alert-important {
+            background-color: var(--important-bg);
+            border-color: #a78bfa;
+            color: var(--text-main);
+        }
+        .alert-block.alert-important .alert-header {
+            color: #a78bfa;
+        }
+
+        .alert-block.alert-warning {
+            background-color: var(--warning-bg);
+            border-color: var(--warning);
+            color: var(--text-main);
+        }
+        .alert-block.alert-warning .alert-header {
+            color: var(--warning);
+        }
+
+        .alert-block.alert-caution {
+            background-color: var(--caution-bg);
+            border-color: var(--error);
+            color: var(--text-main);
+        }
+        .alert-block.alert-caution .alert-header {
+            color: var(--error);
+        }
+
+        /* Mermaid Diagrams container */
+        .mermaid {
+            background-color: #1e293b;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: center;
+            overflow-x: auto;
+        }
+
+        /* Error state formatting */
+        .error-message {
+            text-align: center;
+            padding: 4rem 0;
+            color: var(--error);
+        }
+
+        .error-message svg {
+            width: 48px;
+            height: 48px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+            margin-bottom: 1rem;
+        }
+
+        .error-message h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem;
+            }
+
+            .content-area {
+                padding: 1.5rem;
+            }
+
+            .markdown-body h1 {
+                font-size: 2rem;
+            }
+
+            .markdown-body h2 {
+                font-size: 1.45rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Top Nav Header -->
+        <div class="nav-header">
+            <a href="../index.html" class="back-btn">
+                <svg viewBox="0 0 24 24">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Back to Dashboard
+            </a>
+            <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle Theme">
+                <!-- Sun Icon (shown in dark mode) -->
+                <svg class="sun" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <!-- Moon Icon (shown in light mode) -->
+                <svg class="moon" viewBox="0 0 24 24">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Content Area -->
+        <div class="content-area">
+            <!-- Loader State -->
+            <div id="loader" class="loader">
+                <div class="spinner"></div>
+                <p>Fetching challenge documentation...</p>
+            </div>
+
+            <!-- Error State -->
+            <div id="errorState" class="error-message" style="display: none;">
+                <svg viewBox="0 0 24 24">
+                    <polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"></polygon>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+                <h3>Failed to Load Documentation</h3>
+                <p id="errorText">The requested challenge markdown file could not be found.</p>
+            </div>
+
+            <!-- Markdown Render Target -->
+            <div id="markdownContent" class="markdown-body" style="display: none;"></div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        // Custom Alert Parser logic
+        function parseAlerts(html) {
+            const alertTypes = {
+                'NOTE': { class: 'alert-note', icon: `<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>` },
+                'TIP': { class: 'alert-tip', icon: `<svg viewBox="0 0 24 24"><path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7zm2.85 11.1l-.85.6V16h-4v-2.3l-.85-.6C8.25 12.4 7.5 10.75 7.5 9c0-2.48 2.02-4.5 4.5-4.5s4.5 2.02 4.5 4.5c0 1.75-.75 3.4-2.15 4.1z"/></svg>` },
+                'IMPORTANT': { class: 'alert-important', icon: `<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>` },
+                'WARNING': { class: 'alert-warning', icon: `<svg viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>` },
+                'CAUTION': { class: 'alert-caution', icon: `<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11H7v-2h10v2z"/></svg>` }
+            };
+
+            const div = document.createElement('div');
+            div.innerHTML = html;
+            const blockquotes = div.querySelectorAll('blockquote');
+            blockquotes.forEach(bq => {
+                const text = bq.textContent.trim();
+                const match = text.match(/^\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]/i);
+                if (match) {
+                    const type = match[1].toUpperCase();
+                    const config = alertTypes[type];
+                    let contentHtml = bq.innerHTML;
+                    contentHtml = contentHtml.replace(/\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]/i, '').trim();
+                    contentHtml = contentHtml.replace(/^<br\s*\/?>/i, '').trim();
+                    
+                    const alertBlock = document.createElement('div');
+                    alertBlock.className = `alert-block ${config.class}`;
+                    alertBlock.innerHTML = `
+                        <div class="alert-header">
+                            <span class="alert-icon">${config.icon}</span>
+                            <span class="alert-title">${type}</span>
+                        </div>
+                        <div class="alert-content">${contentHtml}</div>
+                    `;
+                    bq.parentNode.replaceChild(alertBlock, bq);
+                }
+            });
+            return div.innerHTML;
+        }
+
+        // Render Mermaid diagrams
+        function prepareMermaid() {
+            const codeBlocks = document.querySelectorAll('pre code.language-mermaid');
+            codeBlocks.forEach(code => {
+                const pre = code.parentNode;
+                const div = document.createElement('div');
+                div.className = 'mermaid';
+                div.textContent = code.textContent;
+                pre.parentNode.replaceChild(div, pre);
+            });
+            if (window.mermaid) {
+                const isLight = document.body.classList.contains('light-mode');
+                mermaid.initialize({ 
+                    startOnLoad: false, 
+                    theme: isLight ? 'default' : 'dark',
+                    themeVariables: {
+                        background: '#1e293b',
+                        primaryColor: '#38bdf8'
+                    }
+                });
+                mermaid.run();
+            }
+        }
+
+        // Fetch and render the markdown file
+        async function loadMarkdown() {
+            const loader = document.getElementById('loader');
+            const errorState = document.getElementById('errorState');
+            const contentDiv = document.getElementById('markdownContent');
+            const errorText = document.getElementById('errorText');
+
+            // Get challenge file name from URL path
+            const path = window.location.pathname;
+            const challengeName = path.substring(path.lastIndexOf('/') + 1);
+
+            if (!challengeName || challengeName === 'viewer.html') {
+                loader.style.display = 'none';
+                errorState.style.display = 'block';
+                errorText.textContent = "No challenge path specified.";
+                return;
+            }
+
+            try {
+                // Fetch the raw markdown content
+                const response = await fetch(`${challengeName}.md`);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                const mdText = await response.text();
+
+                // Convert markdown to HTML
+                let renderedHtml = marked.parse(mdText);
+
+                // Parse custom alerts
+                renderedHtml = parseAlerts(renderedHtml);
+
+                // Insert HTML
+                contentDiv.innerHTML = renderedHtml;
+
+                // Adjust elements
+                prepareMermaid();
+
+                // Show content
+                loader.style.display = 'none';
+                contentDiv.style.display = 'block';
+
+                // Force syntax highlighting
+                Prism.highlightAll();
+
+            } catch (err) {
+                console.error("Error loading challenge:", err);
+                loader.style.display = 'none';
+                errorState.style.display = 'block';
+                errorText.textContent = `The challenge document "${challengeName}.md" could not be loaded or processed.`;
+            }
+        }
+
+        // Theme Toggle
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            document.body.classList.add('light-mode');
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+            const isLight = document.body.classList.contains('light-mode');
+            localStorage.setItem('theme', isLight ? 'light' : 'dark');
+            
+            // Reload the page on theme change if Mermaid diagrams are present,
+            // as Mermaid caches theme options inside generated SVGs.
+            if (document.querySelectorAll('.mermaid').length > 0) {
+                location.reload();
+            }
+        });
+
+        // Run on load
+        window.addEventListener('DOMContentLoaded', loadMarkdown);
+    </script>
+</body>
+
+</html>
