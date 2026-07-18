@@ -102,7 +102,7 @@ docker commit ubuntu_latest beta:devops
 ```
 *Alternatively, add metadata using the author and message flags:*
 ```bash
-docker commit -a "Jane Mils" -m "Patched dependencies in container" ubuntu_latest beta:devops
+docker commit -a "Test Containder" -m "Patched dependencies in container" ubuntu_latest beta:devops
 ```
 *If permissions require, prepend with `sudo`:*
 ```bash
