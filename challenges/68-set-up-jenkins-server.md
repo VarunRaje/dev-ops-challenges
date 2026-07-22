@@ -16,19 +16,24 @@ graph TD
         User["CI/CD Administrator"]
     end
 
-    subgraph TargetServer ["Jenkins Target Server (Debian/Ubuntu)"]
-        direction TB
-        APT["APT Package Manager"] -->|Installs| Java["OpenJDK 21 JRE"]
-        APT -->|Installs| JenkinsService["Jenkins Daemon (Port 8080)"]
-        
-        JenkinsKeyring["GPG Keyring <br> /etc/apt/keyrings/jenkins-keyring.asc"] -.->|Verifies Signatures| APT
-        JenkinsSource["Jenkins Source File <br> /etc/apt/sources.list.d/jenkins.list"] -.->|Configures Repo| APT
-        
-        SecretPath["Unlock Keyfile <br> /var/lib/jenkins/secrets/initialAdminPassword"] -->|Unlock Code| SetupWizard["Web Setup Wizard <br> Create Admin: theadmin"]
+    subgraph TargetServer ["Jenkins Target Server"]
+        APT["APT Package Manager"]
+        Java["OpenJDK 21 JRE"]
+        JenkinsService["Jenkins Daemon on Port 8080"]
+        JenkinsKeyring["GPG Keyring File"]
+        JenkinsSource["Jenkins Source File"]
+        SecretPath["Unlock Keyfile Secret"]
+        SetupWizard["Web Setup Wizard"]
     end
 
-    User -->|SSH root@jenkins| APT
-    User -->|HTTP Access: Port 8080| SetupWizard
+    APT -->|Installs| Java
+    APT -->|Installs| JenkinsService
+    JenkinsKeyring -.->|Verifies Signatures| APT
+    JenkinsSource -.->|Configures Repo| APT
+    SecretPath -->|Unlock Code| SetupWizard
+
+    User -->|SSH as root| APT
+    User -->|HTTP Access| SetupWizard
 ```
 
 ---
