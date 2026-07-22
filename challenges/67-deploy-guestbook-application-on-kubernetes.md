@@ -12,17 +12,17 @@ The communication between the frontend tier and backend tier is dynamically reso
 
 ```mermaid
 graph TD
-    subgraph Frontend Tier
+    subgraph FrontendTier ["Frontend Tier"]
         ServiceFE["Service (NodePort): frontend <br> Port: 80 / NodePort: 30009"] -->|Routes HTTP Traffic| PodFE1["Pod: frontend-1"]
         ServiceFE -->|Routes HTTP Traffic| PodFE2["Pod: frontend-2"]
         ServiceFE -->|Routes HTTP Traffic| PodFE3["Pod: frontend-3"]
     end
 
-    subgraph Backend Storage Tier
+    subgraph BackendStorageTier ["Backend Storage Tier"]
         PodFE1 & PodFE2 & PodFE3 -->|Writes to port 6379| ServiceMaster["Service (ClusterIP): redis-master <br> Port: 6379"]
         PodFE1 & PodFE2 & PodFE3 -->|Reads from port 6379| ServiceSlave["Service (ClusterIP): redis-slave <br> Port: 6379"]
         
-        ServiceMaster -->|Routes Writes| PodMaster["Pod: redis-master <br> (1 Replica)"]
+        ServiceMaster -->|Routes Writes| PodMaster["Pod: redis-master <br> 1 Replica"]
         ServiceSlave -->|Routes Reads| PodSlave1["Pod: redis-slave-1"]
         ServiceSlave -->|Routes Reads| PodSlave2["Pod: redis-slave-2"]
         
@@ -32,7 +32,7 @@ graph TD
         PodMaster -.->|Replication| PodSlave1 & PodSlave2
     end
 
-    User[Web Client] -->|HTTP Request to NodeIP:30009| ServiceFE
+    User["Web Client"] -->|HTTP Request to NodeIP:30009| ServiceFE
 ```
 
 ---

@@ -12,22 +12,22 @@ Jenkins operates as a standalone Java application hosting its own embedded servl
 
 ```mermaid
 graph TD
-    subgraph Client System
-        User[CI/CD Administrator]
+    subgraph ClientSystem ["Client System"]
+        User["CI/CD Administrator"]
     end
 
-    subgraph Jenkins Target Server (Debian/Ubuntu)
+    subgraph TargetServer ["Jenkins Target Server (Debian/Ubuntu)"]
         direction TB
         APT["APT Package Manager"] -->|Installs| Java["OpenJDK 21 JRE"]
         APT -->|Installs| JenkinsService["Jenkins Daemon (Port 8080)"]
         
-        JenkinsKeyring["GPG Keyring <br> (/etc/apt/keyrings/jenkins-keyring.asc)"] -.->|Verifies Signatures| APT
-        JenkinsSource["Jenkins Source File <br> (/etc/apt/sources.list.d/jenkins.list)"] -.->|Configures Repo| APT
+        JenkinsKeyring["GPG Keyring <br> /etc/apt/keyrings/jenkins-keyring.asc"] -.->|Verifies Signatures| APT
+        JenkinsSource["Jenkins Source File <br> /etc/apt/sources.list.d/jenkins.list"] -.->|Configures Repo| APT
         
-        SecretPath["Unlock Keyfile <br> (/var/lib/jenkins/secrets/initialAdminPassword)"] -->|Unlock Code| SetupWizard["Web Setup Wizard <br> (Create Admin: theadmin)"]
+        SecretPath["Unlock Keyfile <br> /var/lib/jenkins/secrets/initialAdminPassword"] -->|Unlock Code| SetupWizard["Web Setup Wizard <br> Create Admin: theadmin"]
     end
 
-    User -->|SSH root@jenkins| TargetServer[Jenkins Target Server]
+    User -->|SSH root@jenkins| APT
     User -->|HTTP Access: Port 8080| SetupWizard
 ```
 
