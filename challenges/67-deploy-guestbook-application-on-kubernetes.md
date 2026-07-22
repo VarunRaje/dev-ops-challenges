@@ -60,19 +60,38 @@ Defining CPU and memory requirements ensures that containers have guaranteed res
 *   **Namespace:** `default`
 
 ### 1. Back-End Tier Requirements
-| Object Name | Type | Replicas | Container Name | Image | Port | Resources (Requests) | Env Variables |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **redis-master** | Deployment | 1 | `master-redis-xfusion` | `redis` | `6379` | CPU: `100m`, Memory: `100Mi` | N/A |
-| **redis-master** | Service | N/A | N/A | N/A | `6379` | N/A | N/A |
-| **redis-slave** | Deployment | 2 | `slave-redis-xfusion` | `gcr.io/google_samples/gb-redisslave:v3` | `6379` | CPU: `100m`, Memory: `100Mi` | `GET_HOSTS_FROM` = `dns` |
-| **redis-slave** | Service | N/A | N/A | N/A | `6379` | N/A | N/A |
-| **redis-follower** | Service | N/A | N/A | N/A | `6379` | N/A | Selector: `app` = `redis-slave` |
+
+#### Redis Master:
+*   **Deployment Name:** `redis-master`
+*   **Replicas:** `1`
+*   **Container Name:** `master-redis-xfusion`
+*   **Image:** `redis`
+*   **Container Port:** `6379`
+*   **Resource Requests:** CPU `100m`, Memory `100Mi`
+*   **Service Name:** `redis-master` (Port/TargetPort: `6379`)
+
+#### Redis Slave:
+*   **Deployment Name:** `redis-slave`
+*   **Replicas:** `2`
+*   **Container Name:** `slave-redis-xfusion`
+*   **Image:** `gcr.io/google_samples/gb-redisslave:v3`
+*   **Container Port:** `6379`
+*   **Environment Variables:** `GET_HOSTS_FROM` = `dns`
+*   **Resource Requests:** CPU `100m`, Memory `100Mi`
+*   **Service Name:** `redis-slave` (Port: `6379`)
+*   **Follower Service Name:** `redis-follower` (Port/TargetPort: `6379`, Selector: `app` = `redis-slave`)
 
 ### 2. Front-End Tier Requirements
-| Object Name | Type | Replicas | Container Name | Image | Port / NodePort | Resources (Requests) | Env Variables |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **frontend** | Deployment | 3 | `php-redis-xfusion` | `gcr.io/google-samples/gb-frontend@sha256:a908df8486ff66f2c4daa0d3d8a2fa09846a1fc8efd65649c0109695c7c5cbff` | `80` | CPU: `100m`, Memory: `100Mi` | `GET_HOSTS_FROM` = `dns` |
-| **frontend** | Service | N/A | N/A | N/A | Port: `80` <br> NodePort: `30009` | N/A | N/A |
+
+#### Frontend PHP:
+*   **Deployment Name:** `frontend`
+*   **Replicas:** `3`
+*   **Container Name:** `php-redis-xfusion`
+*   **Image:** `gcr.io/google-samples/gb-frontend@sha256:a908df8486ff66f2c4daa0d3d8a2fa09846a1fc8efd65649c0109695c7c5cbff`
+*   **Container Port:** `80`
+*   **Environment Variables:** `GET_HOSTS_FROM` = `dns`
+*   **Resource Requests:** CPU `100m`, Memory `100Mi`
+*   **Service Name:** `frontend` (Type: `NodePort`, Port: `80`, NodePort: `30009`)
 
 ---
 
