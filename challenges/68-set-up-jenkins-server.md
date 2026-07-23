@@ -158,10 +158,18 @@ a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6
 
 Copy the output hash, paste it into the **Administrator password** field on the Jenkins landing page (`http://<server-ip>:8080`), and click **Continue**.
 
+![Unlock Jenkins](screenshots/challenge%2068/Screenshot%202026-07-23%20at%208.10.00%E2%80%AFPM.png)
+
 ---
 
 ### Step 2: Install Suggested Plugins
 On the customize page, click the **Install suggested plugins** option. This installs basic plugins for source control (Git), pipelines, credentials management, and node configurations.
+
+![Customize Jenkins](screenshots/challenge%2068/Screenshot%202026-07-23%20at%208.10.41%E2%80%AFPM.png)
+
+The setup wizard will begin installing the baseline set of plugins:
+
+![Installing Plugins](screenshots/challenge%2068/Screenshot%202026-07-23%20at%208.10.57%E2%80%AFPM.png)
 
 ---
 
@@ -175,12 +183,23 @@ In the **Create First Admin User** screen, fill out the form using the exact con
 
 Click **Save and Continue**.
 
+![Create First Admin User](screenshots/challenge%2068/Screenshot%202026-07-23%20at%208.12.21%E2%80%AFPM.png)
+
 ---
 
 ### Step 4: Complete Instance Configuration
 1.  Verify that the **Jenkins URL** is auto-detected correctly (e.g., `http://jenkins:8080/` or the server's IP address).
+
+![Instance Configuration](screenshots/challenge%2068/Screenshot%202026-07-23%20at%208.13.17%E2%80%AFPM.png)
+
 2.  Click **Save and Finish**.
 3.  Click **Start using Jenkins** to log into the main Jenkins dashboard.
+
+![Jenkins is Ready](screenshots/challenge%2068/Screenshot%202026-07-23%20at%208.13.32%E2%80%AFPM.png)
+
+Once finished, the web browser will load the default Jenkins welcome page:
+
+![Jenkins Dashboard](screenshots/challenge%2068/Screenshot%202026-07-23%20at%208.13.49%E2%80%AFPM.png)
 
 ---
 
