@@ -24,24 +24,24 @@ graph TD
 
     subgraph JenkinsController ["Jenkins Controller"]
         Job1["Upstream Job:<br/>nautilus-app-deployment"]
-        ChainedTrigger["Post-Build Action:<br/>Trigger 'manage-services' if Stable"]
+        ChainedTrigger["Post-Build Action:<br/>Trigger manage-services if Stable"]
         Job2["Downstream Job:<br/>manage-services"]
     end
 
-    subgraph AppServer ["App Server 1 (stapp01)"]
+    subgraph AppServer ["App Server 1: stapp01"]
         Java17["Java 17 Runtime<br/>java-17-openjdk"]
-        Agent["Jenkins Agent (tony)<br/>Remote Root: /var/www/html"]
+        Agent["Jenkins Agent: tony<br/>Remote Root: /var/www/html"]
         WebRoot["Apache Document Root<br/>/var/www/html"]
         Httpd["Apache HTTPD Service<br/>systemctl restart httpd"]
     end
 
-    Trigger -->|1. Build Now| Job1
-    Job1 -->|2. Schedule Execution on stapp01| Agent
-    Agent -->|3. Execute Shell: git pull origin master| WebRoot
-    Job1 -->|4. Build Status: SUCCESS| ChainedTrigger
-    ChainedTrigger -->|5. Trigger Downstream Job| Job2
-    Job2 -->|6. Execute Shell: systemctl restart httpd| Httpd
-    Httpd -->|7. Serve Updated Web App| WebRoot
+    Trigger -->|"1. Build Now"| Job1
+    Job1 -->|"2. Schedule Execution on stapp01"| Agent
+    Agent -->|"3. Execute Shell: git pull origin master"| WebRoot
+    Job1 -->|"4. Build Status: SUCCESS"| ChainedTrigger
+    ChainedTrigger -->|"5. Trigger Downstream Job"| Job2
+    Job2 -->|"6. Execute Shell: systemctl restart httpd"| Httpd
+    Httpd -->|"7. Serve Updated Web App"| WebRoot
 ```
 
 ---

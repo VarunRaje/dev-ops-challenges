@@ -16,7 +16,7 @@ Key tasks accomplished:
 ```mermaid
 graph TD
     subgraph SCM ["Gitea Source Control"]
-        GitRepo["Git Repository<br/>http://gitea:3000/sarah/web.git<br/>(Branch: master)"]
+        GitRepo["Git Repository: sarah/web.git<br/>Branch: master"]
     end
 
     subgraph JenkinsController ["Jenkins Controller"]
@@ -24,19 +24,18 @@ graph TD
         Job["Freestyle Job:<br/>datacenter-app-deployment"]
     end
 
-    subgraph AppServer ["App Server 1 (stapp01)"]
+    subgraph AppServer ["App Server 1: stapp01"]
         Java17["Java 17 Runtime<br/>java-17-openjdk"]
         Agent["Jenkins Agent Process<br/>Remote Root: /var/www/html"]
-        WebRoot["Apache Document Root<br/>/var/www/html (Owner: sarah)"]
+        WebRoot["Apache Document Root<br/>/var/www/html - Owner: sarah"]
         Apache["Apache Web Server<br/>Port 80 / 8091"]
     end
 
-    GitRepo -->|1. Developer Pushes Commit| GitRepo
-    PollTrigger -->|2. Check for New Commits (Every 2 min)| GitRepo
-    GitRepo -->|3. Detect New Commit Hash| Job
-    Job -->|4. Trigger Deployment on stapp01| Agent
-    Agent -->|5. Execute Shell: git pull origin master| WebRoot
-    WebRoot -->|6. Serve Updated Content| Apache
+    PollTrigger -->|"1. Poll Git Repository (Every 2 min)"| GitRepo
+    GitRepo -->|"2. Detect New Commit Hash"| Job
+    Job -->|"3. Trigger Deployment on stapp01"| Agent
+    Agent -->|"4. Execute Shell: git pull origin master"| WebRoot
+    WebRoot -->|"5. Serve Updated Content"| Apache
 ```
 
 ---

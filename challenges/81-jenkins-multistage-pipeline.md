@@ -19,28 +19,28 @@ Key tasks accomplished:
 ```mermaid
 graph TD
     subgraph SCM ["Gitea Source Control"]
-        GitRepo["Git Repository<br/>sarah/web.git (master)"]
+        GitRepo["Git Repository: sarah/web.git<br/>Branch: master"]
     end
 
     subgraph JenkinsController ["Jenkins Controller"]
-        Credentials["Jenkins Store<br/>Secret/Credentials (sarah)"]
+        Credentials["Jenkins Store<br/>Secret Credentials for sarah"]
         PipelineJob["Declarative Pipeline:<br/>deploy-job"]
-        StageView["Jenkins Stage View<br/>[Deploy] ➔ [Test]"]
+        StageView["Jenkins Stage View<br/>Deploy and Test Stages"]
     end
 
-    subgraph AppServer ["App Server 1 (stapp01)"]
+    subgraph AppServer ["App Server 1: stapp01"]
         Java17["Java 17 Runtime<br/>java-17-openjdk"]
-        Agent["Jenkins Agent (sarah)<br/>Remote Root: /home/sarah/jenkins_agent"]
+        Agent["Jenkins Agent: sarah<br/>Remote Root: /home/sarah/jenkins_agent"]
         WebRoot["Apache Web Root<br/>/var/www/html"]
         Apache["Apache Web Server<br/>Port 8091"]
     end
 
-    Credentials -->|Authenticate SSH Agent| Agent
-    GitRepo -->|1. Commit & Push Code| PipelineJob
-    PipelineJob -->|2. Schedule Execution on stapp01| Agent
-    Agent -->|3. Stage 1: Deploy (git pull origin master)| WebRoot
-    WebRoot -->|4. Stage 2: Test (curl --fail APP_URL)| Apache
-    Apache -->|5. HTTP 200 OK Response| StageView
+    Credentials -->|"Authenticate SSH Agent"| Agent
+    GitRepo -->|"1. Commit and Push Code"| PipelineJob
+    PipelineJob -->|"2. Schedule Execution on stapp01"| Agent
+    Agent -->|"3. Stage 1: Deploy - git pull origin master"| WebRoot
+    WebRoot -->|"4. Stage 2: Test - curl --fail APP_URL"| Apache
+    Apache -->|"5. HTTP 200 OK Response"| StageView
 ```
 
 ---
