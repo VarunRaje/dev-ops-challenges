@@ -20,7 +20,7 @@ graph TD
     end
 
     subgraph JenkinsController ["Jenkins Controller"]
-        PollTrigger["Poll SCM Scheduler<br/>Interval: H/2 * * * *"]
+        PollTrigger["Poll SCM Scheduler<br/>Schedule: Every 2 Minutes"]
         Job["Freestyle Job:<br/>datacenter-app-deployment"]
     end
 
@@ -28,7 +28,7 @@ graph TD
         Java17["Java 17 Runtime<br/>java-17-openjdk"]
         Agent["Jenkins Agent Process<br/>Remote Root: /var/www/html"]
         WebRoot["Apache Document Root<br/>/var/www/html - Owner: sarah"]
-        Apache["Apache Web Server<br/>Port 80 / 8091"]
+        Apache["Apache Web Server<br/>Port 8091"]
     end
 
     PollTrigger -->|"1. Poll Git Repository Every 2 min"| GitRepo
