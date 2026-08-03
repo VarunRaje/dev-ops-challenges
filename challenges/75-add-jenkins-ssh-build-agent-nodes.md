@@ -17,25 +17,25 @@ graph TD
         AgentPlugin["SSH Build Agents Plugin"]
     end
 
-    subgraph AppServer1 ["App Server 1 (stapp01)"]
+    subgraph AppServer1 ["App Server 1: stapp01"]
         JVM1["Java 17 OpenJDK Runtime"]
         Remoting1["Jenkins Agent Process<br/>Remote Root: /home/tony/jenkins"]
     end
 
-    subgraph AppServer2 ["App Server 2 (stapp02)"]
+    subgraph AppServer2 ["App Server 2: stapp02"]
         JVM2["Java 17 OpenJDK Runtime"]
         Remoting2["Jenkins Agent Process<br/>Remote Root: /home/steve/jenkins"]
     end
 
-    subgraph AppServer3 ["App Server 3 (stapp03)"]
+    subgraph AppServer3 ["App Server 3: stapp03"]
         JVM3["Java 17 OpenJDK Runtime"]
         Remoting3["Jenkins Agent Process<br/>Remote Root: /home/banner/jenkins"]
     end
 
-    UI -->|Dispatches Jobs| AgentPlugin
-    AgentPlugin -->|1. SSH Connection (User: tony)| Remoting1
-    AgentPlugin -->|2. SSH Connection (User: steve)| Remoting2
-    AgentPlugin -->|3. SSH Connection (User: banner)| Remoting3
+    UI -->|"Dispatches Jobs"| AgentPlugin
+    AgentPlugin -->|"1. SSH Connection - User: tony"| Remoting1
+    AgentPlugin -->|"2. SSH Connection - User: steve"| Remoting2
+    AgentPlugin -->|"3. SSH Connection - User: banner"| Remoting3
 
     Remoting1 --- JVM1
     Remoting2 --- JVM2

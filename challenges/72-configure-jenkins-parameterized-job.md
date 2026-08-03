@@ -27,13 +27,13 @@ graph TD
         Output["Console Output Stream"]
     end
 
-    User -->|1. Select 'Build with Parameters'| JobConfig
-    JobConfig -->|2. Supply Stage| StringParam
-    JobConfig -->|3. Select Choice| ChoiceParam
-    StringParam -->|4. Export $Stage| EnvInjection
-    ChoiceParam -->|5. Export $env| EnvInjection
-    EnvInjection -->|6. Execute echo commands| ShellStep
-    ShellStep -->|7. Print Parameter Values| Output
+    User -->|"1. Select Build with Parameters"| JobConfig
+    JobConfig -->|"2. Supply Stage"| StringParam
+    JobConfig -->|"3. Select Choice"| ChoiceParam
+    StringParam -->|"4. Export Stage Parameter"| EnvInjection
+    ChoiceParam -->|"5. Export env Parameter"| EnvInjection
+    EnvInjection -->|"6. Execute echo commands"| ShellStep
+    ShellStep -->|"7. Print Parameter Values"| Output
 ```
 
 ---
