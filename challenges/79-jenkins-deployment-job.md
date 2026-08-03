@@ -31,7 +31,7 @@ graph TD
         Apache["Apache Web Server<br/>Port 80 / 8091"]
     end
 
-    PollTrigger -->|"1. Poll Git Repository (Every 2 min)"| GitRepo
+    PollTrigger -->|"1. Poll Git Repository Every 2 min"| GitRepo
     GitRepo -->|"2. Detect New Commit Hash"| Job
     Job -->|"3. Trigger Deployment on stapp01"| Agent
     Agent -->|"4. Execute Shell: git pull origin master"| WebRoot

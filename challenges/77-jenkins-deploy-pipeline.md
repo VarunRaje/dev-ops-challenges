@@ -15,7 +15,7 @@ Key tasks accomplished:
 ```mermaid
 graph TD
     subgraph SCM ["Gitea Version Control"]
-        GitRepo["Git Repository<br/>sarah/web_app (master)"]
+        GitRepo["Git Repository<br/>sarah/web_app master branch"]
     end
 
     subgraph JenkinsController ["Jenkins Controller"]
@@ -23,17 +23,17 @@ graph TD
         Script["Declarative Jenkinsfile<br/>agent { label 'stapp01' }"]
     end
 
-    subgraph AppServer ["App Server 1 (stapp01)"]
+    subgraph AppServer ["App Server 1: stapp01"]
         Agent["Jenkins Agent Process<br/>Root: /home/sarah/jenkins_agent"]
         WebRoot["Apache Web Root<br/>/var/www/html"]
         Apache["Apache Web Server<br/>Port 8091"]
     end
 
-    GitRepo -->|1. Source Code Push| Job
-    Job -->|2. Parse Pipeline| Script
-    Script -->|3. Schedule Job on stapp01| Agent
-    Agent -->|4. Execute Shell: git pull| WebRoot
-    WebRoot -->|5. Serve Updated Web Content| Apache
+    GitRepo -->|"1. Source Code Push"| Job
+    Job -->|"2. Parse Pipeline"| Script
+    Script -->|"3. Schedule Job on stapp01"| Agent
+    Agent -->|"4. Execute Shell: git pull"| WebRoot
+    WebRoot -->|"5. Serve Updated Web Content"| Apache
 ```
 
 ---

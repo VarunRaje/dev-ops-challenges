@@ -23,20 +23,20 @@ graph TD
         Script["Declarative Jenkinsfile<br/>agent { label 'stapp01' }"]
     end
 
-    subgraph AppServer ["App Server 1 (stapp01)"]
+    subgraph AppServer ["App Server 1: stapp01"]
         Agent["Jenkins Agent Process<br/>Root: /home/sarah/jenkins_agent"]
         GitRepo["Git Repository<br/>http://gitea:3000/sarah/web_app"]
         WebRoot["Apache Web Root<br/>/var/www/html"]
         Apache["Apache Web Server<br/>Port 8091"]
     end
 
-    Param -->|1. Submit Parameter| Job
-    Job -->|2. Inject ${BRANCH}| Script
-    Script -->|3. Schedule on stapp01| Agent
-    Agent -->|4. git fetch origin| GitRepo
-    Agent -->|5. git checkout ${BRANCH}| WebRoot
-    Agent -->|6. git pull origin ${BRANCH}| WebRoot
-    WebRoot -->|7. Serve Updated Branch Content| Apache
+    Param -->|"1. Submit Parameter"| Job
+    Job -->|"2. Inject BRANCH Parameter"| Script
+    Script -->|"3. Schedule on stapp01"| Agent
+    Agent -->|"4. git fetch origin"| GitRepo
+    Agent -->|"5. git checkout BRANCH"| WebRoot
+    Agent -->|"6. git pull origin BRANCH"| WebRoot
+    WebRoot -->|"7. Serve Updated Branch Content"| Apache
 ```
 
 ---
