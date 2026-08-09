@@ -124,7 +124,7 @@ graph TD
 
 ## Infrastructure & Configuration Requirements
 
-### Server Inventory Matrix
+<div style="overflow-x: auto;">
 
 | Host Role | Hostname / Alias | SSH User | SSH Password | Web Server | Target File Path | Target File Owner | Target Permissions |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -132,6 +132,8 @@ graph TD
 | **App Server 1** | `stapp01` | `tony` | `Ir0nM@n` | `httpd` | `/var/www/html/index.html` | `apache:apache` | `0644` |
 | **App Server 2** | `stapp02` | `steve` | `Am3ric@` | `httpd` | `/var/www/html/index.html` | `apache:apache` | `0644` |
 | **App Server 3** | `stapp03` | `banner` | `BigGr33n` | `httpd` | `/var/www/html/index.html` | `apache:apache` | `0644` |
+
+</div>
 
 ### Requirements Checklist
 
