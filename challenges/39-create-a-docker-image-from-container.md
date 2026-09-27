@@ -14,14 +14,14 @@ When you run, modify, install packages, or create files inside a container, thos
 
 ```mermaid
 graph TD
-    subgraph Container State (Running)
+    subgraph Running["Container State (Running)"]
         RO1[Base Layer 1: Read-Only] --> RO2[Base Layer 2: Read-Only]
-        RO2 --> RW[Container Layer: Read-Write (Modifications/Packages)]
+        RO2 --> RW["Container Layer: Read-Write (Modifications/Packages)"]
     end
     subgraph Docker Commit Action
         RW -->|docker commit| NewRO[New Image Layer: Read-Only]
     end
-    subgraph Committed Image (beta:devops)
+    subgraph Committed["Committed Image (beta:devops)"]
         RO1_new[Base Layer 1: Read-Only] --> RO2_new[Base Layer 2: Read-Only]
         RO2_new --> NewRO
     end

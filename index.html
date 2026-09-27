@@ -4,9 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kode Kloud 100 Days of DevOps</title>
+    <title>KodeKloud 100 Days of DevOps: All 100 Challenge Solutions</title>
+    <meta name="description" content="Step-by-step solutions to all 100 KodeKloud 100 Days of DevOps challenges: Linux, Git, Docker, Kubernetes, Jenkins, Ansible and Terraform, with commands and screenshots.">
+    <link rel="canonical" href="https://dev-ops.randomx.cloud/">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="author" content="Varun Deshpande">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="KodeKloud 100 Days of DevOps">
+    <meta property="og:title" content="KodeKloud 100 Days of DevOps: All 100 Challenge Solutions">
+    <meta property="og:description" content="Step-by-step solutions to all 100 KodeKloud DevOps challenges: Linux, Git, Docker, Kubernetes, Jenkins, Ansible and Terraform.">
+    <meta property="og:url" content="https://dev-ops.randomx.cloud/">
+    <meta property="og:image" content="https://dev-ops.randomx.cloud/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap');
 
         :root {
             --bg-color: #0b1329;
@@ -400,6 +416,15 @@
         }
 
         @media (max-width: 576px) {
+            /* Keep the absolutely positioned theme toggle clear of the heading */
+            header {
+                padding-top: 2.5rem;
+            }
+
+            header h1 {
+                font-size: 2.2rem;
+            }
+
             .controls-container {
                 flex-direction: column;
                 align-items: stretch;
@@ -530,6 +555,19 @@
         body.light-mode .contact-link:hover {
             color: #ffffff;
         }
+        .site-footer {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .site-footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
     </style>
 </head>
 
@@ -552,9 +590,9 @@
         </button>
 
         <header>
-            <h1>Kode Kloud DevOps Challenges Dashboard</h1>
-            <p>Learn DevOps by 100 days of challenges</p>
-            <a href="contact" class="contact-link">
+            <h1>KodeKloud 100 Days of DevOps: Challenge Solutions</h1>
+            <p>Learn DevOps by 100 days of hands-on challenges, each solved step by step with commands and screenshots</p>
+            <a href="/contact" class="contact-link">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round">
                     <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
@@ -597,27 +635,27 @@
 
         <div class="challenge-container list-view" id="challengeGrid">
 
-            <a href="challenges/01-linux-user-setup" class="challenge-item">
+            <a href="/challenges/01-linux-user-setup" class="challenge-item">
                 <div class="row-num">Challenge 01</div>
-                <div class="row-title">Linux User Setup</div>
+                <h3 class="row-title">Linux User Setup</h3>
                 <div class="row-desc">Set up a Linux user with a non-interactive shell for automated tasks.</div>
                 <div class="row-tech"><span class="tech-badge">Linux</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/02-temporary-user-setup" class="challenge-item">
+            <a href="/challenges/02-temporary-user-setup" class="challenge-item">
                 <div class="row-num">Challenge 02</div>
-                <div class="row-title">Temporary User Setup</div>
+                <h3 class="row-title">Temporary User Setup</h3>
                 <div class="row-desc">Create a temporary user account with an automatic expiry date.</div>
                 <div class="row-tech"><span class="tech-badge">Linux</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/03-secure-root-ssh" class="challenge-item">
+            <a href="/challenges/03-secure-root-ssh" class="challenge-item">
                 <div class="row-num">Challenge 03</div>
-                <div class="row-title">Secure Root SSH</div>
+                <h3 class="row-title">Secure Root SSH</h3>
                 <div class="row-desc">Disable direct root SSH login and configure servers to enforce administrative
                     login accountability.</div>
                 <div class="row-tech"><span class="tech-badge">Linux</span></div>
@@ -625,9 +663,9 @@
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/04-script-execution-permissions" class="challenge-item">
+            <a href="/challenges/04-script-execution-permissions" class="challenge-item">
                 <div class="row-num">Challenge 04</div>
-                <div class="row-title">Script Permissions</div>
+                <h3 class="row-title">Script Permissions</h3>
                 <div class="row-desc">Modify file permissions for a distributed script to grant read and execute access.
                 </div>
                 <div class="row-tech"><span class="tech-badge">Linux</span></div>
@@ -635,9 +673,9 @@
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/05-selinux-installation-and-configuration" class="challenge-item">
+            <a href="/challenges/05-selinux-installation-and-configuration" class="challenge-item">
                 <div class="row-num">Challenge 05</div>
-                <div class="row-title">SELinux Configuration</div>
+                <h3 class="row-title">SELinux Configuration</h3>
                 <div class="row-desc">Install essential SELinux packages and permanently disable SELinux at system boot.
                 </div>
                 <div class="row-tech"><span class="tech-badge">Linux</span></div>
@@ -645,18 +683,18 @@
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/06-create-a-cron-job" class="challenge-item">
+            <a href="/challenges/06-create-a-cron-job" class="challenge-item">
                 <div class="row-num">Challenge 06</div>
-                <div class="row-title">Create a Cron Job</div>
+                <h3 class="row-title">Create a Cron Job</h3>
                 <div class="row-desc">Install cronie package, enable crond, and configure a recurring root task.</div>
                 <div class="row-tech"><span class="tech-badge">Linux</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/07-linux-ssh-authentication" class="challenge-item">
+            <a href="/challenges/07-linux-ssh-authentication" class="challenge-item">
                 <div class="row-num">Challenge 07</div>
-                <div class="row-title">Linux SSH Auth</div>
+                <h3 class="row-title">Linux SSH Auth</h3>
                 <div class="row-desc">Generate RSA key pairs and distribute them to enable password-less SSH access.
                 </div>
                 <div class="row-tech"><span class="tech-badge">Linux / SSH</span></div>
@@ -664,18 +702,18 @@
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/08-install-ansible" class="challenge-item">
+            <a href="/challenges/08-install-ansible" class="challenge-item">
                 <div class="row-num">Challenge 08</div>
-                <div class="row-title">Install Ansible</div>
+                <h3 class="row-title">Install Ansible</h3>
                 <div class="row-desc">Install Ansible 4.10.0 globally using pip3 on the Jump Host.</div>
                 <div class="row-tech"><span class="tech-badge">Ansible / Python</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/09-mariadb-troubleshooting" class="challenge-item">
+            <a href="/challenges/09-mariadb-troubleshooting" class="challenge-item">
                 <div class="row-num">Challenge 09</div>
-                <div class="row-title">MariaDB Troubleshooting</div>
+                <h3 class="row-title">MariaDB Troubleshooting</h3>
                 <div class="row-desc">Troubleshoot database startup failure by resolving runtime directory permissions.
                 </div>
                 <div class="row-tech"><span class="tech-badge">Database / Linux</span></div>
@@ -683,9 +721,9 @@
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/10-linux-bash-scripts" class="challenge-item">
+            <a href="/challenges/10-linux-bash-scripts" class="challenge-item">
                 <div class="row-num">Challenge 10</div>
-                <div class="row-title">Linux Bash Scripts</div>
+                <h3 class="row-title">Linux Bash Scripts</h3>
                 <div class="row-desc">Write an automated backup Bash script that compresses static site data and
                     transfers it remotely.</div>
                 <div class="row-tech"><span class="tech-badge">Bash / Linux</span></div>
@@ -693,9 +731,9 @@
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/11-install-and-configure-tomcat-server" class="challenge-item">
+            <a href="/challenges/11-install-and-configure-tomcat-server" class="challenge-item">
                 <div class="row-num">Challenge 11</div>
-                <div class="row-title">Install Tomcat Server</div>
+                <h3 class="row-title">Install Tomcat Server</h3>
                 <div class="row-desc">Install Apache Tomcat on App Server 1, change port to 8085, and deploy ROOT.war.
                 </div>
                 <div class="row-tech"><span class="tech-badge">Java / Tomcat</span></div>
@@ -703,9 +741,9 @@
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/12-linux-network-services" class="challenge-item">
+            <a href="/challenges/12-linux-network-services" class="challenge-item">
                 <div class="row-num">Challenge 12</div>
-                <div class="row-title">Linux Network Services</div>
+                <h3 class="row-title">Linux Network Services</h3>
                 <div class="row-desc">Troubleshoot port conflicts, reconfigure sendmail SMTP port, and open firewall
                     rules.</div>
                 <div class="row-tech"><span class="tech-badge">Network / Linux</span></div>
@@ -713,9 +751,9 @@
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/13-iptables-installation-and-configuration" class="challenge-item">
+            <a href="/challenges/13-iptables-installation-and-configuration" class="challenge-item">
                 <div class="row-num">Challenge 13</div>
-                <div class="row-title">IPtables Configuration</div>
+                <h3 class="row-title">IPtables Configuration</h3>
                 <div class="row-desc">Install iptables-services and configure rules to restrict access only to the Load
                     Balancer.</div>
                 <div class="row-tech"><span class="tech-badge">Security / Linux</span></div>
@@ -723,9 +761,9 @@
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/14-linux-process-troubleshooting" class="challenge-item">
+            <a href="/challenges/14-linux-process-troubleshooting" class="challenge-item">
                 <div class="row-num">Challenge 14</div>
-                <div class="row-title">Process Troubleshooting</div>
+                <h3 class="row-title">Process Troubleshooting</h3>
                 <div class="row-desc">Diagnose web server port conflicts, disable sendmail, and run httpd on port 5004.
                 </div>
                 <div class="row-tech"><span class="tech-badge">Linux</span></div>
@@ -733,9 +771,9 @@
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/15-setup-ssl-for-nginx" class="challenge-item">
+            <a href="/challenges/15-setup-ssl-for-nginx" class="challenge-item">
                 <div class="row-num">Challenge 15</div>
-                <div class="row-title">Setup SSL for Nginx</div>
+                <h3 class="row-title">Setup SSL for Nginx</h3>
                 <div class="row-desc">Install Nginx, configure SSL block on port 443 with self-signed certificate, and
                     deploy a secure page.</div>
                 <div class="row-tech"><span class="tech-badge">Nginx / SSL</span></div>
@@ -743,9 +781,9 @@
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/16-install-and-configure-nginx-as-an-lbr" class="challenge-item">
+            <a href="/challenges/16-install-and-configure-nginx-as-an-lbr" class="challenge-item">
                 <div class="row-num">Challenge 16</div>
-                <div class="row-title">Nginx as a Load Balancer</div>
+                <h3 class="row-title">Nginx as a Load Balancer</h3>
                 <div class="row-desc">Install Nginx on the LB host, configure upstreams, and set up reverse proxy
                     passing.</div>
                 <div class="row-tech"><span class="tech-badge">Nginx / LBR</span></div>
@@ -753,9 +791,9 @@
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/17-install-and-configure-postgres" class="challenge-item">
+            <a href="/challenges/17-install-and-configure-postgres" class="challenge-item">
                 <div class="row-num">Challenge 17</div>
-                <div class="row-title">Install PostgreSQL</div>
+                <h3 class="row-title">Install PostgreSQL</h3>
                 <div class="row-desc">Install PostgreSQL database engine and configure it for a development environment.
                 </div>
                 <div class="row-tech"><span class="tech-badge">Linux</span></div>
@@ -763,9 +801,9 @@
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/18-install-and-configure-mariadb" class="challenge-item">
+            <a href="/challenges/18-install-and-configure-mariadb" class="challenge-item">
                 <div class="row-num">Challenge 18</div>
-                <div class="row-title">Install MariaDB</div>
+                <h3 class="row-title">Install MariaDB</h3>
                 <div class="row-desc">Install and configure MariaDB database engine for use in a development workspace.
                 </div>
                 <div class="row-tech"><span class="tech-badge">Linux</span></div>
@@ -773,9 +811,9 @@
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/19-hosting-multiple-static-websites-on-apache" class="challenge-item">
+            <a href="/challenges/19-hosting-multiple-static-websites-on-apache" class="challenge-item">
                 <div class="row-num">Challenge 19</div>
-                <div class="row-title">Hosting Multiple Apache Sites</div>
+                <h3 class="row-title">Hosting Multiple Apache Sites</h3>
                 <div class="row-desc">Install Apache on App Server 2, change the port to 5004, and set up VirtualHost
                     configs.</div>
                 <div class="row-tech"><span class="tech-badge">Apache / Linux</span></div>
@@ -783,9 +821,9 @@
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/20-configure-nginx-php-fpm-using-unix-sock" class="challenge-item">
+            <a href="/challenges/20-configure-nginx-php-fpm-using-unix-sock" class="challenge-item">
                 <div class="row-num">Challenge 20</div>
-                <div class="row-title">Nginx + PHP-FPM Socket</div>
+                <h3 class="row-title">Nginx + PHP-FPM Socket</h3>
                 <div class="row-desc">Install Nginx and PHP-FPM 8.3 and configure high-performance communication over a
                     Unix socket.</div>
                 <div class="row-tech"><span class="tech-badge">Nginx / PHP</span></div>
@@ -793,9 +831,9 @@
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/21-set-up-git-repository-on-storage-server" class="challenge-item">
+            <a href="/challenges/21-set-up-git-repository-on-storage-server" class="challenge-item">
                 <div class="row-num">Challenge 21</div>
-                <div class="row-title">Set Up Git Repository</div>
+                <h3 class="row-title">Set Up Git Repository</h3>
                 <div class="row-desc">Install Git and initialize a central bare repository at /opt/news.git on Nautilus
                     Storage.</div>
                 <div class="row-tech"><span class="tech-badge">Git / Linux</span></div>
@@ -803,9 +841,9 @@
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/22-clone-git-repository-on-storage-server" class="challenge-item">
+            <a href="/challenges/22-clone-git-repository-on-storage-server" class="challenge-item">
                 <div class="row-num">Challenge 22</div>
-                <div class="row-title">Clone Git Repository</div>
+                <h3 class="row-title">Clone Git Repository</h3>
                 <div class="row-desc">Clone an existing bare repository from /opt to /usr/src/kodekloudrepos as an
                     unprivileged user.</div>
                 <div class="row-tech"><span class="tech-badge">Git / Linux</span></div>
@@ -813,9 +851,9 @@
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/23-fork-a-git-repository" class="challenge-item">
+            <a href="/challenges/23-fork-a-git-repository" class="challenge-item">
                 <div class="row-num">Challenge 23</div>
-                <div class="row-title">Fork a Git Repository</div>
+                <h3 class="row-title">Fork a Git Repository</h3>
                 <div class="row-desc">Sign in to Gitea, locate upstream repo sarah/story-blog, and fork it under your
                     namespace.</div>
                 <div class="row-tech"><span class="tech-badge">Git / Gitea</span></div>
@@ -823,9 +861,9 @@
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/24-git-create-branches" class="challenge-item">
+            <a href="/challenges/24-git-create-branches" class="challenge-item">
                 <div class="row-num">Challenge 24</div>
-                <div class="row-title">Git Create Branches</div>
+                <h3 class="row-title">Git Create Branches</h3>
                 <div class="row-desc">Create a new feature branch xfusioncorp_media from the master branch on Nautilus
                     Storage.</div>
                 <div class="row-tech"><span class="tech-badge">Git / Linux</span></div>
@@ -833,9 +871,9 @@
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/25-git-merge-branches" class="challenge-item">
+            <a href="/challenges/25-git-merge-branches" class="challenge-item">
                 <div class="row-num">Challenge 25</div>
-                <div class="row-title">Git Merge Branches</div>
+                <h3 class="row-title">Git Merge Branches</h3>
                 <div class="row-desc">Create a feature branch, commit modifications, merge it back into master, and push
                     to remote.</div>
                 <div class="row-tech"><span class="tech-badge">Git / Linux</span></div>
@@ -843,9 +881,9 @@
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/26-git-manage-remotes" class="challenge-item">
+            <a href="/challenges/26-git-manage-remotes" class="challenge-item">
                 <div class="row-num">Challenge 26</div>
-                <div class="row-title">Git Manage Remotes</div>
+                <h3 class="row-title">Git Manage Remotes</h3>
                 <div class="row-desc">Configure a new bare repository remote link on Nautilus Storage, commit, and push
                     changes.</div>
                 <div class="row-tech"><span class="tech-badge">Git / Linux</span></div>
@@ -853,9 +891,9 @@
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/27-git-revert-some-changes" class="challenge-item">
+            <a href="/challenges/27-git-revert-some-changes" class="challenge-item">
                 <div class="row-num">Challenge 27</div>
-                <div class="row-title">Git Revert Changes</div>
+                <h3 class="row-title">Git Revert Changes</h3>
                 <div class="row-desc">Perform a safe repository rollback by reverting the latest commit while preserving
                     historical log.</div>
                 <div class="row-tech"><span class="tech-badge">Git / Linux</span></div>
@@ -863,9 +901,9 @@
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/28-git-cherry-pick" class="challenge-item">
+            <a href="/challenges/28-git-cherry-pick" class="challenge-item">
                 <div class="row-num">Challenge 28</div>
-                <div class="row-title">Git Cherry Pick</div>
+                <h3 class="row-title">Git Cherry Pick</h3>
                 <div class="row-desc">Cherry-pick a specific commit from a feature branch onto the master branch on
                     Nautilus Storage.</div>
                 <div class="row-tech"><span class="tech-badge">Git / Linux</span></div>
@@ -873,9 +911,9 @@
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/29-manage-git-pull-requests" class="challenge-item">
+            <a href="/challenges/29-manage-git-pull-requests" class="challenge-item">
                 <div class="row-num">Challenge 29</div>
-                <div class="row-title">Manage Git Pull Requests</div>
+                <h3 class="row-title">Manage Git Pull Requests</h3>
                 <div class="row-desc">Raise a Pull Request on Gitea as Max, add Tom as reviewer, and merge changes
                     without branch deletion.</div>
                 <div class="row-tech"><span class="tech-badge">Git / Gitea</span></div>
@@ -883,9 +921,9 @@
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/30-git-hard-reset" class="challenge-item">
+            <a href="/challenges/30-git-hard-reset" class="challenge-item">
                 <div class="row-num">Challenge 30</div>
-                <div class="row-title">Git Hard Reset</div>
+                <h3 class="row-title">Git Hard Reset</h3>
                 <div class="row-desc">Revert a repository on Nautilus Storage to a previous commit using git reset
                     --hard to discard unwanted test changes.</div>
                 <div class="row-tech"><span class="tech-badge">Git / Linux</span></div>
@@ -893,9 +931,9 @@
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/31-git-stash" class="challenge-item">
+            <a href="/challenges/31-git-stash" class="challenge-item">
                 <div class="row-num">Challenge 31</div>
-                <div class="row-title">Git Stash</div>
+                <h3 class="row-title">Git Stash</h3>
                 <div class="row-desc">Save dirty working copy changes temporarily using git stash, and restore a
                     specific stash entry to clean the repository.</div>
                 <div class="row-tech"><span class="tech-badge">Git / Linux</span></div>
@@ -903,9 +941,9 @@
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/32-git-rebase" class="challenge-item">
+            <a href="/challenges/32-git-rebase" class="challenge-item">
                 <div class="row-num">Challenge 32</div>
-                <div class="row-title">Git Rebase</div>
+                <h3 class="row-title">Git Rebase</h3>
                 <div class="row-desc">Rebase a feature branch onto the master branch on Nautilus Storage to maintain a
                     clean, linear commit log history.</div>
                 <div class="row-tech"><span class="tech-badge">Git / Linux</span></div>
@@ -913,9 +951,9 @@
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/33-resolve-git-merge-conflicts" class="challenge-item">
+            <a href="/challenges/33-resolve-git-merge-conflicts" class="challenge-item">
                 <div class="row-num">Challenge 33</div>
-                <div class="row-title">Resolve Git Merge Conflicts</div>
+                <h3 class="row-title">Resolve Git Merge Conflicts</h3>
                 <div class="row-desc">Resolve concurrent merge conflicts in story-index.txt manually as Max, correct
                     spelling typos, and push to origin.</div>
                 <div class="row-tech"><span class="tech-badge">Git / Linux</span></div>
@@ -923,9 +961,9 @@
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/34-git-hook" class="challenge-item">
+            <a href="/challenges/34-git-hook" class="challenge-item">
                 <div class="row-num">Challenge 34</div>
-                <div class="row-title">Git Hook</div>
+                <h3 class="row-title">Git Hook</h3>
                 <div class="row-desc">Configure a server-side post-update Git hook inside a bare remote repository to
                     automate release tagging on master pushes.</div>
                 <div class="row-tech"><span class="tech-badge">Git / Linux</span></div>
@@ -933,18 +971,18 @@
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/35-install-docker-packages-and-start-docker-service" class="challenge-item">
+            <a href="/challenges/35-install-docker-packages-and-start-docker-service" class="challenge-item">
                 <div class="row-num">Challenge 35</div>
-                <div class="row-title">Install Docker Packages and Start Docker Service</div>
+                <h3 class="row-title">Install Docker Packages and Start Docker Service</h3>
                 <div class="row-desc">Configure the Docker repository, install docker-ce, docker-compose, and start the Docker system service.</div>
                 <div class="row-tech"><span class="tech-badge">Docker / Linux</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/36-deploy-nginx-container-on-application-server" class="challenge-item">
+            <a href="/challenges/36-deploy-nginx-container-on-application-server" class="challenge-item">
                 <div class="row-num">Challenge 36</div>
-                <div class="row-title">Deploy Nginx Container on Application Server</div>
+                <h3 class="row-title">Deploy Nginx Container on Application Server</h3>
                 <div class="row-desc">Install and start Docker, deploy an Nginx Alpine container named nginx_3, and
                     expose the application port.</div>
                 <div class="row-tech"><span class="tech-badge">Docker / Linux</span></div>
@@ -952,576 +990,576 @@
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/37-copy-file-to-docker-container" class="challenge-item">
+            <a href="/challenges/37-copy-file-to-docker-container" class="challenge-item">
                 <div class="row-num">Challenge 37</div>
-                <div class="row-title">Copy File to Docker Container</div>
+                <h3 class="row-title">Copy File to Docker Container</h3>
                 <div class="row-desc">Securely transfer an encrypted file from the Docker host to a running container using docker cp.</div>
                 <div class="row-tech"><span class="tech-badge">Docker / Linux</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/38-pull-docker-image" class="challenge-item">
+            <a href="/challenges/38-pull-docker-image" class="challenge-item">
                 <div class="row-num">Challenge 38</div>
-                <div class="row-title">Pull Docker Image</div>
+                <h3 class="row-title">Pull Docker Image</h3>
                 <div class="row-desc">Pull a specific image tag (busybox:musl) from Docker Hub and retag it as busybox:media.</div>
                 <div class="row-tech"><span class="tech-badge">Docker / Linux</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/39-create-a-docker-image-from-container" class="challenge-item">
+            <a href="/challenges/39-create-a-docker-image-from-container" class="challenge-item">
                 <div class="row-num">Challenge 39</div>
-                <div class="row-title">Create a Docker Image From Container</div>
+                <h3 class="row-title">Create a Docker Image From Container</h3>
                 <div class="row-desc">Create a new Docker image (beta:devops) from a running container (ubuntu_latest) using docker commit.</div>
                 <div class="row-tech"><span class="tech-badge">Docker / Linux</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/40-docker-exec-operations" class="challenge-item">
+            <a href="/challenges/40-docker-exec-operations" class="challenge-item">
                 <div class="row-num">Challenge 40</div>
-                <div class="row-title">Docker EXEC Operations</div>
+                <h3 class="row-title">Docker EXEC Operations</h3>
                 <div class="row-desc">Install apache2 inside a running container (kkloud) using docker exec and change the port configuration to 8085.</div>
                 <div class="row-tech"><span class="tech-badge">Docker / Linux</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/41-write-a-dockerfile" class="challenge-item">
+            <a href="/challenges/41-write-a-dockerfile" class="challenge-item">
                 <div class="row-num">Challenge 41</div>
-                <div class="row-title">Write a Dockerfile</div>
+                <h3 class="row-title">Write a Dockerfile</h3>
                 <div class="row-desc">Create a custom Dockerfile to install apache2, change the listening port to 8087, and build the image.</div>
                 <div class="row-tech"><span class="tech-badge">Docker / Linux</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/42-create-a-docker-network" class="challenge-item">
+            <a href="/challenges/42-create-a-docker-network" class="challenge-item">
                 <div class="row-num">Challenge 42</div>
-                <div class="row-title">Create a Docker Network</div>
+                <h3 class="row-title">Create a Docker Network</h3>
                 <div class="row-desc">Configure a custom Docker bridge network (ecommerce) with a specific subnet and IP range.</div>
                 <div class="row-tech"><span class="tech-badge">Docker / Linux</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/43-docker-ports-mapping" class="challenge-item">
+            <a href="/challenges/43-docker-ports-mapping" class="challenge-item">
                 <div class="row-num">Challenge 43</div>
-                <div class="row-title">Docker Ports Mapping</div>
+                <h3 class="row-title">Docker Ports Mapping</h3>
                 <div class="row-desc">Deploy an Nginx container and map host port 8086 to container port 80 using docker run port publishing.</div>
                 <div class="row-tech"><span class="tech-badge">Docker / Linux</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/44-write-a-docker-compose-file" class="challenge-item">
+            <a href="/challenges/44-write-a-docker-compose-file" class="challenge-item">
                 <div class="row-num">Challenge 44</div>
-                <div class="row-title">Write a Docker Compose File</div>
+                <h3 class="row-title">Write a Docker Compose File</h3>
                 <div class="row-desc">Create a docker-compose.yml file to run an Apache web server with port mapping and volume host mounts.</div>
                 <div class="row-tech"><span class="tech-badge">Docker / Linux</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/45-resolve-dockerfile-issues" class="challenge-item">
+            <a href="/challenges/45-resolve-dockerfile-issues" class="challenge-item">
                 <div class="row-num">Challenge 45</div>
-                <div class="row-title">Resolve Dockerfile Issues</div>
+                <h3 class="row-title">Resolve Dockerfile Issues</h3>
                 <div class="row-desc">Troubleshoot a broken Dockerfile by replacing RUN cp with COPY and moving files to the build context.</div>
                 <div class="row-tech"><span class="tech-badge">Docker / Linux</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/46-deploy-an-app-on-docker-containers" class="challenge-item">
+            <a href="/challenges/46-deploy-an-app-on-docker-containers" class="challenge-item">
                 <div class="row-num">Challenge 46</div>
-                <div class="row-title">Deploy an App on Docker</div>
+                <h3 class="row-title">Deploy an App on Docker</h3>
                 <div class="row-desc">Deploy a multi-container stack (PHP and MariaDB) using Docker Compose with volume storage and database credentials.</div>
                 <div class="row-tech"><span class="tech-badge">Docker / Linux</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/47-docker-python-app" class="challenge-item">
+            <a href="/challenges/47-docker-python-app" class="challenge-item">
                 <div class="row-num">Challenge 47</div>
-                <div class="row-title">Docker Python App</div>
+                <h3 class="row-title">Docker Python App</h3>
                 <div class="row-desc">Containerize a Flask Python application using a lightweight alpine image and configure port mappings.</div>
                 <div class="row-tech"><span class="tech-badge">Docker / Linux</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/48-deploy-pods-in-kubernetes-cluster" class="challenge-item">
+            <a href="/challenges/48-deploy-pods-in-kubernetes-cluster" class="challenge-item">
                 <div class="row-num">Challenge 48</div>
-                <div class="row-title">Deploy Pods in Kubernetes</div>
+                <h3 class="row-title">Deploy Pods in Kubernetes</h3>
                 <div class="row-desc">Create standalone Pods using kubectl run, and generate manifests with client-side dry runs.</div>
                 <div class="row-tech"><span class="tech-badge">Kubernetes</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/49-deploy-applications-with-kubernetes-deployments" class="challenge-item">
+            <a href="/challenges/49-deploy-applications-with-kubernetes-deployments" class="challenge-item">
                 <div class="row-num">Challenge 49</div>
-                <div class="row-title">Deploy Apps with K8s Deployments</div>
+                <h3 class="row-title">Deploy Apps with K8s Deployments</h3>
                 <div class="row-desc">Create high-availability deployments with custom replica counts and test pod self-healing behavior.</div>
                 <div class="row-tech"><span class="tech-badge">Kubernetes</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/50-set-resource-limits-in-kubernetes-pods" class="challenge-item">
+            <a href="/challenges/50-set-resource-limits-in-kubernetes-pods" class="challenge-item">
                 <div class="row-num">Challenge 50</div>
-                <div class="row-title">Set Resource Limits in K8s Pods</div>
+                <h3 class="row-title">Set Resource Limits in K8s Pods</h3>
                 <div class="row-desc">Configure memory and CPU requests/limits for Pods to enforce Guaranteed QoS parameters.</div>
                 <div class="row-tech"><span class="tech-badge">Kubernetes</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/51-execute-rolling-updates-in-kubernetes" class="challenge-item">
+            <a href="/challenges/51-execute-rolling-updates-in-kubernetes" class="challenge-item">
                 <div class="row-num">Challenge 51</div>
-                <div class="row-title">Execute Rolling Updates in K8s</div>
+                <h3 class="row-title">Execute Rolling Updates in K8s</h3>
                 <div class="row-desc">Perform zero-downtime rolling updates on Deployments and practice rollout history checks and rollbacks.</div>
                 <div class="row-tech"><span class="tech-badge">Kubernetes</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/52-revert-deployment-to-previous-version-in-kubernetes" class="challenge-item">
+            <a href="/challenges/52-revert-deployment-to-previous-version-in-kubernetes" class="challenge-item">
                 <div class="row-num">Challenge 52</div>
-                <div class="row-title">Revert K8s Deployments</div>
+                <h3 class="row-title">Revert K8s Deployments</h3>
                 <div class="row-desc">Troubleshoot failed rollouts and execute rollbacks to stable versions using rollout undo.</div>
                 <div class="row-tech"><span class="tech-badge">Kubernetes</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/53-resolve-volume-mounts-issue-in-kubernetes" class="challenge-item">
+            <a href="/challenges/53-resolve-volume-mounts-issue-in-kubernetes" class="challenge-item">
                 <div class="row-num">Challenge 53</div>
-                <div class="row-title">Resolve Volume Mounts</div>
+                <h3 class="row-title">Resolve Volume Mounts</h3>
                 <div class="row-desc">Troubleshoot shared volume mount paths and align ConfigMap configurations in a multi-container Pod.</div>
                 <div class="row-tech"><span class="tech-badge">Kubernetes</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/54-kubernetes-shared-volumes" class="challenge-item">
+            <a href="/challenges/54-kubernetes-shared-volumes" class="challenge-item">
                 <div class="row-num">Challenge 54</div>
-                <div class="row-title">Kubernetes Shared Volumes</div>
+                <h3 class="row-title">Kubernetes Shared Volumes</h3>
                 <div class="row-desc">Configure and deploy a multi-container Pod sharing storage via an emptyDir volume.</div>
                 <div class="row-tech"><span class="tech-badge">Kubernetes</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/55-kubernetes-sidecar-containers" class="challenge-item">
+            <a href="/challenges/55-kubernetes-sidecar-containers" class="challenge-item">
                 <div class="row-num">Challenge 55</div>
-                <div class="row-title">Kubernetes Sidecar Containers</div>
+                <h3 class="row-title">Kubernetes Sidecar Containers</h3>
                 <div class="row-desc">Implement the Sidecar pattern in a Pod using Nginx and an Ubuntu log-shipping sidecar container.</div>
                 <div class="row-tech"><span class="tech-badge">Kubernetes</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/56-deploy-nginx-web-server-on-kubernetes-cluster" class="challenge-item">
+            <a href="/challenges/56-deploy-nginx-web-server-on-kubernetes-cluster" class="challenge-item">
                 <div class="row-num">Challenge 56</div>
-                <div class="row-title">Deploy Nginx Web Server on K8s</div>
+                <h3 class="row-title">Deploy Nginx Web Server on K8s</h3>
                 <div class="row-desc">Deploy a replicated Nginx web server and expose it externally using a NodePort Service.</div>
                 <div class="row-tech"><span class="tech-badge">Kubernetes</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/57-print-environment-variables" class="challenge-item">
+            <a href="/challenges/57-print-environment-variables" class="challenge-item">
                 <div class="row-num">Challenge 57</div>
-                <div class="row-title">Print Environment Variables</div>
+                <h3 class="row-title">Print Environment Variables</h3>
                 <div class="row-desc">Inject static environment variables into a Pod container and output their concatenated values.</div>
                 <div class="row-tech"><span class="tech-badge">Kubernetes</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/58-deploy-grafana-on-kubernetes-cluster" class="challenge-item">
+            <a href="/challenges/58-deploy-grafana-on-kubernetes-cluster" class="challenge-item">
                 <div class="row-num">Challenge 58</div>
-                <div class="row-title">Deploy Grafana on K8s</div>
+                <h3 class="row-title">Deploy Grafana on K8s</h3>
                 <div class="row-desc">Deploy a Grafana container and expose its visualization dashboard externally using a NodePort Service.</div>
                 <div class="row-tech"><span class="tech-badge">Kubernetes</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/59-troubleshoot-deployment-issues-in-kubernetes" class="challenge-item">
+            <a href="/challenges/59-troubleshoot-deployment-issues-in-kubernetes" class="challenge-item">
                 <div class="row-num">Challenge 59</div>
-                <div class="row-title">Troubleshoot K8s Deployments</div>
+                <h3 class="row-title">Troubleshoot K8s Deployments</h3>
                 <div class="row-desc">Diagnose container state issues and correct volume and image name typos in a Deployment spec.</div>
                 <div class="row-tech"><span class="tech-badge">Kubernetes</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/60-persistent-volumes-in-kubernetes" class="challenge-item">
+            <a href="/challenges/60-persistent-volumes-in-kubernetes" class="challenge-item">
                 <div class="row-num">Challenge 60</div>
-                <div class="row-title">Persistent Volumes in K8s</div>
+                <h3 class="row-title">Persistent Volumes in K8s</h3>
                 <div class="row-desc">Configure static persistent storage using PersistentVolumes and Claims and bind them to a web server.</div>
                 <div class="row-tech"><span class="tech-badge">Kubernetes</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/61-init-containers-in-kubernetes" class="challenge-item">
+            <a href="/challenges/61-init-containers-in-kubernetes" class="challenge-item">
                 <div class="row-num">Challenge 61</div>
-                <div class="row-title">Init Containers in K8s</div>
+                <h3 class="row-title">Init Containers in K8s</h3>
                 <div class="row-desc">Implement an init container to perform pre-requisite startup tasks and prepare shared volume files.</div>
                 <div class="row-tech"><span class="tech-badge">Kubernetes</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/62-kubernetes-secrets" class="challenge-item">
+            <a href="/challenges/62-kubernetes-secrets" class="challenge-item">
                 <div class="row-num">Challenge 62</div>
-                <div class="row-title">Kubernetes Secrets</div>
+                <h3 class="row-title">Kubernetes Secrets</h3>
                 <div class="row-desc">Store license information securely as generic Secrets and consume them inside a running Pod container.</div>
                 <div class="row-tech"><span class="tech-badge">Kubernetes</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/63-deploy-multi-tier-application-on-kubernetes" class="challenge-item">
+            <a href="/challenges/63-deploy-multi-tier-application-on-kubernetes" class="challenge-item">
                 <div class="row-num">Challenge 63</div>
-                <div class="row-title">Deploy Multi-Tier App on K8s</div>
+                <h3 class="row-title">Deploy Multi-Tier App on K8s</h3>
                 <div class="row-desc">Deploy a two-tier application (Iron Gallery & MariaDB) under a custom namespace with resource limits and services.</div>
                 <div class="row-tech"><span class="tech-badge">Kubernetes</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/64-fix-python-app-deployed-on-kubernetes-cluster" class="challenge-item">
+            <a href="/challenges/64-fix-python-app-deployed-on-kubernetes-cluster" class="challenge-item">
                 <div class="row-num">Challenge 64</div>
-                <div class="row-title">Fix Python App on K8s</div>
+                <h3 class="row-title">Fix Python App on K8s</h3>
                 <div class="row-desc">Troubleshoot port inconsistencies and correct container image names in a Deployment and Service spec.</div>
                 <div class="row-tech"><span class="tech-badge">Kubernetes</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/65-deploy-redis-deployment-on-kubernetes" class="challenge-item">
+            <a href="/challenges/65-deploy-redis-deployment-on-kubernetes" class="challenge-item">
                 <div class="row-num">Challenge 65</div>
-                <div class="row-title">Deploy Redis on K8s</div>
+                <h3 class="row-title">Deploy Redis on K8s</h3>
                 <div class="row-desc">Configure a Redis Deployment with dedicated emptyDir data storage and mounted ConfigMap configurations.</div>
                 <div class="row-tech"><span class="tech-badge">Kubernetes</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/66-deploy-mysql-on-kubernetes-with-pv-pvc-and-secrets" class="challenge-item">
+            <a href="/challenges/66-deploy-mysql-on-kubernetes-with-pv-pvc-and-secrets" class="challenge-item">
                 <div class="row-num">Challenge 66</div>
-                <div class="row-title">Deploy MySQL on K8s with PV & Secrets</div>
+                <h3 class="row-title">Deploy MySQL on K8s with PV & Secrets</h3>
                 <div class="row-desc">Deploy a MySQL database using PV/PVC persistent storage, Secrets for credential management, and NodePort 30007.</div>
                 <div class="row-tech"><span class="tech-badge">Kubernetes</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/67-deploy-guestbook-application-on-kubernetes" class="challenge-item">
+            <a href="/challenges/67-deploy-guestbook-application-on-kubernetes" class="challenge-item">
                 <div class="row-num">Challenge 67</div>
-                <div class="row-title">Deploy Guestbook Application on K8s</div>
+                <h3 class="row-title">Deploy Guestbook Application on K8s</h3>
                 <div class="row-desc">Deploy a multi-tier Guestbook application using Redis master-slave replication and a PHP frontend tier.</div>
                 <div class="row-tech"><span class="tech-badge">Kubernetes</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/68-set-up-jenkins-server" class="challenge-item">
+            <a href="/challenges/68-set-up-jenkins-server" class="challenge-item">
                 <div class="row-num">Challenge 68</div>
-                <div class="row-title">Set Up Jenkins Server</div>
+                <h3 class="row-title">Set Up Jenkins Server</h3>
                 <div class="row-desc">Install Java runtime environment, configure the official Jenkins repository, and complete the Initial Setup Wizard.</div>
                 <div class="row-tech"><span class="tech-badge">Jenkins</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/69-install-jenkins-plugins" class="challenge-item">
+            <a href="/challenges/69-install-jenkins-plugins" class="challenge-item">
                 <div class="row-num">Challenge 69</div>
-                <div class="row-title">Install Jenkins Plugins</div>
+                <h3 class="row-title">Install Jenkins Plugins</h3>
                 <div class="row-desc">Configure Jenkins update center, install Git and GitLab integration plugins, and complete verification on installed plugins tab.</div>
                 <div class="row-tech"><span class="tech-badge">Jenkins</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/70-configure-jenkins-user-access" class="challenge-item">
+            <a href="/challenges/70-configure-jenkins-user-access" class="challenge-item">
                 <div class="row-num">Challenge 70</div>
-                <div class="row-title">Configure Jenkins User Access</div>
+                <h3 class="row-title">Configure Jenkins User Access</h3>
                 <div class="row-desc">Utilize the Project-based Matrix Authorization Strategy to assign overall read permission to a new user and restrict anonymous access.</div>
                 <div class="row-tech"><span class="tech-badge">Jenkins</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/71-configure-jenkins-job-for-package-installation" class="challenge-item">
+            <a href="/challenges/71-configure-jenkins-job-for-package-installation" class="challenge-item">
                 <div class="row-num">Challenge 71</div>
-                <div class="row-title">Configure Jenkins Job for Package Installation</div>
+                <h3 class="row-title">Configure Jenkins Job for Package Installation</h3>
                 <div class="row-desc">Automate remote package installation on storage servers using parameterized Jenkins Freestyle jobs and non-interactive SSH execution.</div>
                 <div class="row-tech"><span class="tech-badge">Jenkins</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/72-configure-jenkins-parameterized-job" class="challenge-item">
+            <a href="/challenges/72-configure-jenkins-parameterized-job" class="challenge-item">
                 <div class="row-num">Challenge 72</div>
-                <div class="row-title">Configure Jenkins Parameterized Job</div>
+                <h3 class="row-title">Configure Jenkins Parameterized Job</h3>
                 <div class="row-desc">Configure a Jenkins Freestyle job with String and Choice parameters to pass dynamic execution environment variables into build scripts.</div>
                 <div class="row-tech"><span class="tech-badge">Jenkins</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/73-schedule-jenkins-job-to-copy-logs" class="challenge-item">
+            <a href="/challenges/73-schedule-jenkins-job-to-copy-logs" class="challenge-item">
                 <div class="row-num">Challenge 73</div>
-                <div class="row-title">Schedule Jenkins Job to Copy Apache Logs Periodically</div>
+                <h3 class="row-title">Schedule Jenkins Job to Copy Apache Logs Periodically</h3>
                 <div class="row-desc">Configure a scheduled Jenkins job executing every 12 minutes to transfer Apache access and error logs from App Server 1 to the Storage Server over SSH.</div>
                 <div class="row-tech"><span class="tech-badge">Jenkins</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/74-configure-jenkins-job-for-database-backup" class="challenge-item">
+            <a href="/challenges/74-configure-jenkins-job-for-database-backup" class="challenge-item">
                 <div class="row-num">Challenge 74</div>
-                <div class="row-title">Configure Jenkins Job for Database Backup</div>
+                <h3 class="row-title">Configure Jenkins Job for Database Backup</h3>
                 <div class="row-desc">Automate periodic MySQL database dumps from App Server 1 and transfer dated backup files to the Storage Server using scheduled Jenkins shell jobs.</div>
                 <div class="row-tech"><span class="tech-badge">Jenkins</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/75-add-jenkins-ssh-build-agent-nodes" class="challenge-item">
+            <a href="/challenges/75-add-jenkins-ssh-build-agent-nodes" class="challenge-item">
                 <div class="row-num">Challenge 75</div>
-                <div class="row-title">Add Jenkins SSH Build Agent Nodes</div>
+                <h3 class="row-title">Add Jenkins SSH Build Agent Nodes</h3>
                 <div class="row-desc">Configure distributed build architecture by attaching App Server 1, App Server 2, and App Server 3 as SSH agent nodes in Jenkins with Java 17 prerequisites.</div>
                 <div class="row-tech"><span class="tech-badge">Jenkins</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/76-configure-job-level-authorization-strategy" class="challenge-item">
+            <a href="/challenges/76-configure-job-level-authorization-strategy" class="challenge-item">
                 <div class="row-num">Challenge 76</div>
-                <div class="row-title">Configure Job-Level Authorization Strategy in Jenkins</div>
+                <h3 class="row-title">Configure Job-Level Authorization Strategy in Jenkins</h3>
                 <div class="row-desc">Implement granular Job-level Role-Based Access Control using Project-based Matrix Authorization Strategy to assign specific build, configure, update, and tag permissions to team users.</div>
                 <div class="row-tech"><span class="tech-badge">Jenkins</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/77-jenkins-deploy-pipeline" class="challenge-item">
+            <a href="/challenges/77-jenkins-deploy-pipeline" class="challenge-item">
                 <div class="row-num">Challenge 77</div>
-                <div class="row-title">Jenkins Deploy Pipeline</div>
+                <h3 class="row-title">Jenkins Deploy Pipeline</h3>
                 <div class="row-desc">Automate static website deployment from a Gitea repository to Apache web server root on App Server 1 using a Jenkins Declarative Pipeline script.</div>
                 <div class="row-tech"><span class="tech-badge">Jenkins</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/78-jenkins-deploy-pipeline-parameterized" class="challenge-item">
+            <a href="/challenges/78-jenkins-deploy-pipeline-parameterized" class="challenge-item">
                 <div class="row-num">Challenge 78</div>
-                <div class="row-title">Jenkins Deploy Pipeline (Parameterized)</div>
+                <h3 class="row-title">Jenkins Deploy Pipeline (Parameterized)</h3>
                 <div class="row-desc">Automate multi-branch static website deployment from Gitea to Apache web server root on App Server 1 using a Jenkins Parameterized Declarative Pipeline.</div>
                 <div class="row-tech"><span class="tech-badge">Jenkins</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/79-jenkins-deployment-job" class="challenge-item">
+            <a href="/challenges/79-jenkins-deployment-job" class="challenge-item">
                 <div class="row-num">Challenge 79</div>
-                <div class="row-title">Jenkins Deployment Job</div>
+                <h3 class="row-title">Jenkins Deployment Job</h3>
                 <div class="row-desc">Configure an automated deployment job in Jenkins with SCM polling to deploy code from Gitea master branch to Apache web server root on App Server 1.</div>
                 <div class="row-tech"><span class="tech-badge">Jenkins</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/80-jenkins-chained-builds" class="challenge-item">
+            <a href="/challenges/80-jenkins-chained-builds" class="challenge-item">
                 <div class="row-num">Challenge 80</div>
-                <div class="row-title">Jenkins Chained Builds</div>
+                <h3 class="row-title">Jenkins Chained Builds</h3>
                 <div class="row-desc">Configure an automated multi-job build chain in Jenkins to deploy application updates and restart Apache web service upon successful upstream completion.</div>
                 <div class="row-tech"><span class="tech-badge">Jenkins</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/81-jenkins-multistage-pipeline" class="challenge-item">
+            <a href="/challenges/81-jenkins-multistage-pipeline" class="challenge-item">
                 <div class="row-num">Challenge 81</div>
-                <div class="row-title">Jenkins Multistage Pipeline</div>
+                <h3 class="row-title">Jenkins Multistage Pipeline</h3>
                 <div class="row-desc">Create a Declarative Jenkins Pipeline job with Deploy and Test stages to pull web application updates from Gitea and perform automated health check verification.</div>
                 <div class="row-tech"><span class="tech-badge">Jenkins</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/82-create-ansible-inventory-for-app-server-testing" class="challenge-item">
+            <a href="/challenges/82-create-ansible-inventory-for-app-server-testing" class="challenge-item">
                 <div class="row-num">Challenge 82</div>
-                <div class="row-title">Create Ansible Inventory for App Server Testing</div>
+                <h3 class="row-title">Create Ansible Inventory for App Server Testing</h3>
                 <div class="row-desc">Configure an INI-formatted Ansible inventory file on the Jump Host with target host connection parameters and variables to manage application servers in Stratos DC.</div>
                 <div class="row-tech"><span class="tech-badge">Ansible</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/83-troubleshoot-and-create-ansible-playbook" class="challenge-item">
+            <a href="/challenges/83-troubleshoot-and-create-ansible-playbook" class="challenge-item">
                 <div class="row-num">Challenge 83</div>
-                <div class="row-title">Troubleshoot and Create Ansible Playbook</div>
+                <h3 class="row-title">Troubleshoot and Create Ansible Playbook</h3>
                 <div class="row-desc">Troubleshoot Ansible inventory connectivity and create a declarative YAML playbook to execute tasks and manage files across managed nodes in Stratos DC.</div>
                 <div class="row-tech"><span class="tech-badge">Ansible</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/84-copy-data-to-app-servers-using-ansible" class="challenge-item">
+            <a href="/challenges/84-copy-data-to-app-servers-using-ansible" class="challenge-item">
                 <div class="row-num">Challenge 84</div>
-                <div class="row-title">Copy Data to App Servers Using Ansible</div>
+                <h3 class="row-title">Copy Data to App Servers Using Ansible</h3>
                 <div class="row-desc">Automate static data file transfers from Ansible control node to multiple target application servers in Stratos DC using ansible.builtin.copy module.</div>
                 <div class="row-tech"><span class="tech-badge">Ansible</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/85-create-files-on-app-servers-using-ansible" class="challenge-item">
+            <a href="/challenges/85-create-files-on-app-servers-using-ansible" class="challenge-item">
                 <div class="row-num">Challenge 85</div>
-                <div class="row-title">Create Files on App Servers Using Ansible</div>
+                <h3 class="row-title">Create Files on App Servers Using Ansible</h3>
                 <div class="row-desc">Create files and manage filesystem object states, mode permissions, and host-specific ownership across application servers using ansible.builtin.file module.</div>
                 <div class="row-tech"><span class="tech-badge">Ansible</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/86-set-up-passwordless-ssh-for-ansible" class="challenge-item">
+            <a href="/challenges/86-set-up-passwordless-ssh-for-ansible" class="challenge-item">
                 <div class="row-num">Challenge 86</div>
-                <div class="row-title">Set Up Password-Less SSH for Ansible</div>
+                <h3 class="row-title">Set Up Password-Less SSH for Ansible</h3>
                 <div class="row-desc">Configure password-less SSH authentication from Jump Host controller to App Server 2 and verify connectivity using Ansible ping module with custom inventory.</div>
                 <div class="row-tech"><span class="tech-badge">Ansible</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/87-install-chrony-package-using-ansible" class="challenge-item">
+            <a href="/challenges/87-install-chrony-package-using-ansible" class="challenge-item">
                 <div class="row-num">Challenge 87</div>
-                <div class="row-title">Install Chrony Package Using Ansible</div>
+                <h3 class="row-title">Install Chrony Package Using Ansible</h3>
                 <div class="row-desc">Create Ansible inventory and playbook to automate chrony package installation across all Stratos DC app servers using ansible.builtin.yum module and privilege escalation.</div>
                 <div class="row-tech"><span class="tech-badge">Ansible</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/88-deploy-httpd-web-server-using-ansible" class="challenge-item">
+            <a href="/challenges/88-deploy-httpd-web-server-using-ansible" class="challenge-item">
                 <div class="row-num">Challenge 88</div>
-                <div class="row-title">Deploy Httpd Web Server Using Ansible</div>
+                <h3 class="row-title">Deploy Httpd Web Server Using Ansible</h3>
                 <div class="row-desc">Automate httpd web server installation, service management, and custom index page deployment with blockinfile module across all Stratos DC application servers.</div>
                 <div class="row-tech"><span class="tech-badge">Ansible</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/89-ansible-manage-services" class="challenge-item">
+            <a href="/challenges/89-ansible-manage-services" class="challenge-item">
                 <div class="row-num">Challenge 89</div>
-                <div class="row-title">Ansible Manage Services</div>
+                <h3 class="row-title">Ansible Manage Services</h3>
                 <div class="row-desc">Install httpd package and manage service state to ensure it is started and enabled across all Stratos DC application servers using Ansible yum and service modules.</div>
                 <div class="row-tech"><span class="tech-badge">Ansible</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/90-managing-acls-using-ansible" class="challenge-item">
+            <a href="/challenges/90-managing-acls-using-ansible" class="challenge-item">
                 <div class="row-num">Challenge 90</div>
-                <div class="row-title">Managing ACLs Using Ansible</div>
+                <h3 class="row-title">Managing ACLs Using Ansible</h3>
                 <div class="row-desc">Automate creating target files owned by root and managing granular extended Access Control Lists (ACLs) across app servers using ansible.posix.acl module.</div>
                 <div class="row-tech"><span class="tech-badge">Ansible</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/91-ansible-lineinfile-module" class="challenge-item">
+            <a href="/challenges/91-ansible-lineinfile-module" class="challenge-item">
                 <div class="row-num">Challenge 91</div>
-                <div class="row-title">Ansible lineinfile Module</div>
+                <h3 class="row-title">Ansible lineinfile Module</h3>
                 <div class="row-desc">Automate httpd web server setup and prepending welcome header text at Beginning of File (BOF) on index.html using ansible.builtin.lineinfile module.</div>
                 <div class="row-tech"><span class="tech-badge">Ansible</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/92-managing-jinja2-templates-using-ansible" class="challenge-item">
+            <a href="/challenges/92-managing-jinja2-templates-using-ansible" class="challenge-item">
                 <div class="row-num">Challenge 92</div>
-                <div class="row-title">Managing Jinja2 Templates Using Ansible</div>
+                <h3 class="row-title">Managing Jinja2 Templates Using Ansible</h3>
                 <div class="row-desc">Create dynamic index.html.j2 template using inventory_hostname variable and deploy via Ansible template module within httpd role across app servers.</div>
                 <div class="row-tech"><span class="tech-badge">Ansible</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/93-using-ansible-conditionals" class="challenge-item">
+            <a href="/challenges/93-using-ansible-conditionals" class="challenge-item">
                 <div class="row-num">Challenge 93</div>
-                <div class="row-title">Using Ansible Conditionals</div>
+                <h3 class="row-title">Using Ansible Conditionals</h3>
                 <div class="row-desc">Deploy host-specific files and manage target user ownership dynamically across Stratos DC app servers using Ansible when conditional expressions.</div>
                 <div class="row-tech"><span class="tech-badge">Ansible</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/94-create-vpc-using-terraform" class="challenge-item">
+            <a href="/challenges/94-create-vpc-using-terraform" class="challenge-item">
                 <div class="row-num">Challenge 94</div>
-                <div class="row-title">Create VPC Using Terraform</div>
+                <h3 class="row-title">Create VPC Using Terraform</h3>
                 <div class="row-desc">Provision a Virtual Private Cloud (VPC) named devops-vpc in AWS us-east-1 region using HCL configuration, terraform init, plan, and apply workflows.</div>
                 <div class="row-tech"><span class="tech-badge">Terraform</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/95-create-security-group-using-terraform" class="challenge-item">
+            <a href="/challenges/95-create-security-group-using-terraform" class="challenge-item">
                 <div class="row-num">Challenge 95</div>
-                <div class="row-title">Create Security Group Using Terraform</div>
+                <h3 class="row-title">Create Security Group Using Terraform</h3>
                 <div class="row-desc">Provision an AWS Security Group named xfusion-sg with inbound rules for HTTP (port 80) and SSH (port 22) traffic using Terraform in us-east-1.</div>
                 <div class="row-tech"><span class="tech-badge">Terraform</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/96-create-ec2-instance-using-terraform" class="challenge-item">
+            <a href="/challenges/96-create-ec2-instance-using-terraform" class="challenge-item">
                 <div class="row-num">Challenge 96</div>
-                <div class="row-title">Create EC2 Instance Using Terraform</div>
+                <h3 class="row-title">Create EC2 Instance Using Terraform</h3>
                 <div class="row-desc">Provision an Amazon Linux EC2 instance named devops-ec2 with an RSA 4096-bit key pair devops-kp and default security group attachment using Terraform.</div>
                 <div class="row-tech"><span class="tech-badge">Terraform</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/97-create-iam-policy-using-terraform" class="challenge-item">
+            <a href="/challenges/97-create-iam-policy-using-terraform" class="challenge-item">
                 <div class="row-num">Challenge 97</div>
-                <div class="row-title">Create IAM Policy Using Terraform</div>
+                <h3 class="row-title">Create IAM Policy Using Terraform</h3>
                 <div class="row-desc">Provision a customer-managed AWS IAM policy named iampolicy_kareem granting EC2 read-only permissions using jsonencode HCL configuration in Terraform.</div>
                 <div class="row-tech"><span class="tech-badge">Terraform</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/98-create-private-vpc-subnet-and-ec2-using-terraform" class="challenge-item">
+            <a href="/challenges/98-create-private-vpc-subnet-and-ec2-using-terraform" class="challenge-item">
                 <div class="row-num">Challenge 98</div>
-                <div class="row-title">Create Private VPC, Subnet and EC2 Instance Using Terraform</div>
+                <h3 class="row-title">Create Private VPC, Subnet and EC2 Instance Using Terraform</h3>
                 <div class="row-desc">Provision an isolated AWS private VPC datacenter-priv-vpc, subnet datacenter-priv-subnet, restricted security group, and t2.micro EC2 instance datacenter-priv-ec2 with input variables and outputs in Terraform.</div>
                 <div class="row-tech"><span class="tech-badge">Terraform</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/99-create-dynamodb-table-iam-role-and-policy-using-terraform" class="challenge-item">
+            <a href="/challenges/99-create-dynamodb-table-iam-role-and-policy-using-terraform" class="challenge-item">
                 <div class="row-num">Challenge 99</div>
-                <div class="row-title">Create DynamoDB Table, IAM Role, and Read-Only Policy Using Terraform</div>
+                <h3 class="row-title">Create DynamoDB Table, IAM Role, and Read-Only Policy Using Terraform</h3>
                 <div class="row-desc">Provision an AWS DynamoDB table xfusion-table, IAM role xfusion-role, and read-only IAM policy xfusion-readonly-policy using tfvars and outputs in Terraform.</div>
                 <div class="row-tech"><span class="tech-badge">Terraform</span></div>
                 <div class="row-time">1h</div>
                 <div class="row-status"><span class="status-badge status-completed">Completed</span></div>
             </a>
 
-            <a href="challenges/100-create-ec2-instance-and-cloudwatch-alarm-using-terraform" class="challenge-item">
+            <a href="/challenges/100-create-ec2-instance-and-cloudwatch-alarm-using-terraform" class="challenge-item">
                 <div class="row-num">Challenge 100</div>
-                <div class="row-title">Create EC2 Instance and CloudWatch Alarm Using Terraform</div>
+                <h3 class="row-title">Create EC2 Instance and CloudWatch Alarm Using Terraform</h3>
                 <div class="row-desc">Provision an Ubuntu EC2 instance xfusion-ec2, query existing SNS topic xfusion-sns-topic, and configure a CloudWatch CPU utilization alarm xfusion-alarm in Terraform.</div>
                 <div class="row-tech"><span class="tech-badge">Terraform</span></div>
                 <div class="row-time">1h</div>
@@ -1529,6 +1567,12 @@
             </a>
 
         </div>
+
+        <footer class="site-footer">
+            Written by <a href="/contact">Varun Deshpande</a> ·
+            <a href="https://github.com/varunraje" rel="me">GitHub</a> ·
+            <a href="https://www.linkedin.com/in/deshpandevarun/" rel="me">LinkedIn</a>
+        </footer>
     </div>
 
     <script>

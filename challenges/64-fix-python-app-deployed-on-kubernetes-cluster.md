@@ -10,13 +10,13 @@ If a configuration error occurs during update operations, the application can fa
 
 ```mermaid
 graph TD
-    subgraph Mismatched Routing (Broken)
+    subgraph Broken["Mismatched Routing (Broken)"]
         User1[User traffic] -->|Accesses NodeIP:32345| Node1[Node]
         Node1 -->|Service TargetPort: 80| Pod1[Pod: flask-deployment]
         Pod1 -->|Connection Refused| App1[Flask Container: Listening on 5000]
     end
     
-    subgraph Corrected Routing (Fixed)
+    subgraph Fixed["Corrected Routing (Fixed)"]
         User2[User traffic] -->|Accesses NodeIP:32345| Node2[Node]
         Node2 -->|Service TargetPort: 5000| Pod2[Pod: flask-deployment]
         Pod2 -->|Traffic Routed Successfully| App2[Flask Container: Listening on 5000]

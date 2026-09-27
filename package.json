@@ -1,0 +1,14 @@
+{
+  "name": "dev-ops-challenges",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dates": "node scripts/dates.mjs",
+    "build": "node scripts/build.mjs",
+    "serve": "npx --yes http-server dist -p 8080 -e html"
+  },
+  "devDependencies": {
+    "marked": "18.0.14",
+    "sharp": "0.35.4"
+  }
+}
