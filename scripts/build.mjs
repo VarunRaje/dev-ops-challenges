@@ -226,7 +226,8 @@ rmSync(DIST, { recursive: true, force: true });
 mkdirSync(DIST, { recursive: true });
 cpSync(join(ROOT, 'assets'), join(DIST, 'assets'), { recursive: true });
 write('assets/article.css', articleCss.replace(/^ {8}/gm, '').trim() + '\n' + extraCss.replace(/^ {8}/gm, ''));
-for (const f of readdirSync(ROOT).filter(f => /^google[0-9a-f]+\.html$/.test(f))) cpSync(join(ROOT, f), join(DIST, f));
+// Search engine ownership verification files (Google Search Console, Bing Webmaster Tools)
+for (const f of readdirSync(ROOT).filter(f => /^google[0-9a-f]+\.html$/.test(f) || f === 'BingSiteAuth.xml')) cpSync(join(ROOT, f), join(DIST, f));
 cpSync(join(ROOT, '404.html'), join(DIST, '404.html'));
 
 const rewriteMdImages = (md, slug) => md.replace(/!\[([^\]]*)\]\(([^)\s]+)\)/g, (m, alt, src) => {
