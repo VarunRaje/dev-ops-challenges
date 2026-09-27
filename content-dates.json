@@ -1,0 +1,406 @@
+{
+  "challenges/01-linux-user-setup.md": {
+    "published": "2026-06-08T22:17:36+05:30",
+    "modified": "2026-06-20T23:07:27+05:30"
+  },
+  "challenges/02-temporary-user-setup.md": {
+    "published": "2026-06-27T13:35:32+05:30",
+    "modified": "2026-06-27T13:35:32+05:30"
+  },
+  "challenges/03-secure-root-ssh.md": {
+    "published": "2026-06-27T13:35:32+05:30",
+    "modified": "2026-06-27T13:35:32+05:30"
+  },
+  "challenges/04-script-execution-permissions.md": {
+    "published": "2026-06-27T13:35:32+05:30",
+    "modified": "2026-06-27T13:35:32+05:30"
+  },
+  "challenges/05-selinux-installation-and-configuration.md": {
+    "published": "2026-06-27T13:35:32+05:30",
+    "modified": "2026-06-27T13:35:32+05:30"
+  },
+  "challenges/06-create-a-cron-job.md": {
+    "published": "2026-06-27T18:38:53+05:30",
+    "modified": "2026-06-27T18:38:53+05:30"
+  },
+  "challenges/07-linux-ssh-authentication.md": {
+    "published": "2026-06-27T18:38:53+05:30",
+    "modified": "2026-06-27T18:38:53+05:30"
+  },
+  "challenges/08-install-ansible.md": {
+    "published": "2026-06-27T18:38:53+05:30",
+    "modified": "2026-06-27T18:38:53+05:30"
+  },
+  "challenges/09-mariadb-troubleshooting.md": {
+    "published": "2026-06-27T18:38:53+05:30",
+    "modified": "2026-06-27T18:38:53+05:30"
+  },
+  "challenges/10-linux-bash-scripts.md": {
+    "published": "2026-06-27T18:38:53+05:30",
+    "modified": "2026-06-27T18:38:53+05:30"
+  },
+  "challenges/100-create-ec2-instance-and-cloudwatch-alarm-using-terraform.md": {
+    "published": "2026-08-12T18:26:55+05:30",
+    "modified": "2026-08-12T18:26:55+05:30"
+  },
+  "challenges/11-install-and-configure-tomcat-server.md": {
+    "published": "2026-06-28T11:07:16+05:30",
+    "modified": "2026-06-28T11:07:16+05:30"
+  },
+  "challenges/12-linux-network-services.md": {
+    "published": "2026-06-28T11:07:16+05:30",
+    "modified": "2026-06-28T11:07:16+05:30"
+  },
+  "challenges/13-iptables-installation-and-configuration.md": {
+    "published": "2026-06-28T11:07:16+05:30",
+    "modified": "2026-06-28T11:07:16+05:30"
+  },
+  "challenges/14-linux-process-troubleshooting.md": {
+    "published": "2026-06-28T11:07:16+05:30",
+    "modified": "2026-06-28T11:07:16+05:30"
+  },
+  "challenges/15-setup-ssl-for-nginx.md": {
+    "published": "2026-06-28T11:07:16+05:30",
+    "modified": "2026-06-28T11:07:16+05:30"
+  },
+  "challenges/16-install-and-configure-nginx-as-an-lbr.md": {
+    "published": "2026-06-28T11:07:16+05:30",
+    "modified": "2026-06-28T11:07:16+05:30"
+  },
+  "challenges/17-install-and-configure-postgres.md": {
+    "published": "2026-06-15T19:03:52+05:30",
+    "modified": "2026-06-20T23:07:27+05:30"
+  },
+  "challenges/18-install-and-configure-mariadb.md": {
+    "published": "2026-06-16T20:22:33+05:30",
+    "modified": "2026-06-20T23:07:27+05:30"
+  },
+  "challenges/19-hosting-multiple-static-websites-on-apache.md": {
+    "published": "2026-06-17T22:33:02+05:30",
+    "modified": "2026-06-20T23:07:27+05:30"
+  },
+  "challenges/20-configure-nginx-php-fpm-using-unix-sock.md": {
+    "published": "2026-06-20T18:50:06+05:30",
+    "modified": "2026-06-20T23:07:27+05:30"
+  },
+  "challenges/21-set-up-git-repository-on-storage-server.md": {
+    "published": "2026-06-24T22:18:05+05:30",
+    "modified": "2026-06-24T22:18:05+05:30"
+  },
+  "challenges/22-clone-git-repository-on-storage-server.md": {
+    "published": "2026-06-25T22:01:09+05:30",
+    "modified": "2026-06-25T22:01:09+05:30"
+  },
+  "challenges/23-fork-a-git-repository.md": {
+    "published": "2026-06-26T20:57:06+05:30",
+    "modified": "2026-06-26T20:57:06+05:30"
+  },
+  "challenges/24-git-create-branches.md": {
+    "published": "2026-06-27T11:06:06+05:30",
+    "modified": "2026-06-27T11:06:06+05:30"
+  },
+  "challenges/25-git-merge-branches.md": {
+    "published": "2026-06-27T19:25:33+05:30",
+    "modified": "2026-06-27T19:25:33+05:30"
+  },
+  "challenges/26-git-manage-remotes.md": {
+    "published": "2026-06-28T18:20:59+05:30",
+    "modified": "2026-06-28T18:20:59+05:30"
+  },
+  "challenges/27-git-revert-some-changes.md": {
+    "published": "2026-06-29T18:46:28+05:30",
+    "modified": "2026-06-29T18:46:28+05:30"
+  },
+  "challenges/28-git-cherry-pick.md": {
+    "published": "2026-07-01T21:10:10+05:30",
+    "modified": "2026-07-01T21:10:10+05:30"
+  },
+  "challenges/29-manage-git-pull-requests.md": {
+    "published": "2026-07-02T21:21:52+05:30",
+    "modified": "2026-07-02T21:21:52+05:30"
+  },
+  "challenges/30-git-hard-reset.md": {
+    "published": "2026-07-03T18:50:11+05:30",
+    "modified": "2026-07-03T18:50:11+05:30"
+  },
+  "challenges/31-git-stash.md": {
+    "published": "2026-07-03T23:06:22+05:30",
+    "modified": "2026-07-03T23:06:22+05:30"
+  },
+  "challenges/32-git-rebase.md": {
+    "published": "2026-07-04T09:49:31+05:30",
+    "modified": "2026-07-04T09:49:31+05:30"
+  },
+  "challenges/33-resolve-git-merge-conflicts.md": {
+    "published": "2026-07-05T19:32:01+05:30",
+    "modified": "2026-07-05T19:32:01+05:30"
+  },
+  "challenges/34-git-hook.md": {
+    "published": "2026-07-11T08:18:24+05:30",
+    "modified": "2026-07-11T08:18:24+05:30"
+  },
+  "challenges/35-install-docker-packages-and-start-docker-service.md": {
+    "published": "2026-07-11T08:18:24+05:30",
+    "modified": "2026-07-11T08:18:24+05:30"
+  },
+  "challenges/36-deploy-nginx-container-on-application-server.md": {
+    "published": "2026-07-11T08:18:24+05:30",
+    "modified": "2026-07-11T08:18:24+05:30"
+  },
+  "challenges/37-copy-file-to-docker-container.md": {
+    "published": "2026-07-12T05:55:46+05:30",
+    "modified": "2026-07-12T05:55:46+05:30"
+  },
+  "challenges/38-pull-docker-image.md": {
+    "published": "2026-07-12T05:55:46+05:30",
+    "modified": "2026-07-12T05:55:46+05:30"
+  },
+  "challenges/39-create-a-docker-image-from-container.md": {
+    "published": "2026-07-12T05:55:46+05:30",
+    "modified": "2026-07-18T08:47:30+05:30"
+  },
+  "challenges/40-docker-exec-operations.md": {
+    "published": "2026-07-12T05:55:46+05:30",
+    "modified": "2026-07-12T05:55:46+05:30"
+  },
+  "challenges/41-write-a-dockerfile.md": {
+    "published": "2026-07-12T05:55:46+05:30",
+    "modified": "2026-07-12T05:55:46+05:30"
+  },
+  "challenges/42-create-a-docker-network.md": {
+    "published": "2026-07-12T06:07:13+05:30",
+    "modified": "2026-07-12T06:07:13+05:30"
+  },
+  "challenges/43-docker-ports-mapping.md": {
+    "published": "2026-07-12T21:24:26+05:30",
+    "modified": "2026-07-12T21:24:26+05:30"
+  },
+  "challenges/44-write-a-docker-compose-file.md": {
+    "published": "2026-07-12T21:28:15+05:30",
+    "modified": "2026-07-12T21:28:15+05:30"
+  },
+  "challenges/45-resolve-dockerfile-issues.md": {
+    "published": "2026-07-12T21:32:35+05:30",
+    "modified": "2026-07-12T21:32:35+05:30"
+  },
+  "challenges/46-deploy-an-app-on-docker-containers.md": {
+    "published": "2026-07-12T21:34:48+05:30",
+    "modified": "2026-07-12T21:34:48+05:30"
+  },
+  "challenges/47-docker-python-app.md": {
+    "published": "2026-07-12T21:36:58+05:30",
+    "modified": "2026-07-12T21:36:58+05:30"
+  },
+  "challenges/48-deploy-pods-in-kubernetes-cluster.md": {
+    "published": "2026-07-16T22:07:39+05:30",
+    "modified": "2026-07-16T22:07:39+05:30"
+  },
+  "challenges/49-deploy-applications-with-kubernetes-deployments.md": {
+    "published": "2026-07-16T22:15:35+05:30",
+    "modified": "2026-07-16T22:15:35+05:30"
+  },
+  "challenges/50-set-resource-limits-in-kubernetes-pods.md": {
+    "published": "2026-07-16T22:25:26+05:30",
+    "modified": "2026-07-16T22:25:26+05:30"
+  },
+  "challenges/51-execute-rolling-updates-in-kubernetes.md": {
+    "published": "2026-07-16T22:34:54+05:30",
+    "modified": "2026-07-16T22:34:54+05:30"
+  },
+  "challenges/52-revert-deployment-to-previous-version-in-kubernetes.md": {
+    "published": "2026-07-17T18:36:34+05:30",
+    "modified": "2026-07-17T18:36:34+05:30"
+  },
+  "challenges/53-resolve-volume-mounts-issue-in-kubernetes.md": {
+    "published": "2026-07-18T08:48:09+05:30",
+    "modified": "2026-07-18T08:48:09+05:30"
+  },
+  "challenges/54-kubernetes-shared-volumes.md": {
+    "published": "2026-07-18T08:48:09+05:30",
+    "modified": "2026-07-18T08:48:09+05:30"
+  },
+  "challenges/55-kubernetes-sidecar-containers.md": {
+    "published": "2026-07-18T14:39:00+05:30",
+    "modified": "2026-07-18T14:39:00+05:30"
+  },
+  "challenges/56-deploy-nginx-web-server-on-kubernetes-cluster.md": {
+    "published": "2026-07-18T20:12:16+05:30",
+    "modified": "2026-07-18T20:12:16+05:30"
+  },
+  "challenges/57-print-environment-variables.md": {
+    "published": "2026-07-18T20:12:16+05:30",
+    "modified": "2026-07-18T20:12:16+05:30"
+  },
+  "challenges/58-deploy-grafana-on-kubernetes-cluster.md": {
+    "published": "2026-07-18T20:12:16+05:30",
+    "modified": "2026-07-18T20:12:16+05:30"
+  },
+  "challenges/59-troubleshoot-deployment-issues-in-kubernetes.md": {
+    "published": "2026-07-18T20:12:16+05:30",
+    "modified": "2026-07-18T20:12:16+05:30"
+  },
+  "challenges/60-persistent-volumes-in-kubernetes.md": {
+    "published": "2026-07-18T20:12:16+05:30",
+    "modified": "2026-07-18T20:12:16+05:30"
+  },
+  "challenges/61-init-containers-in-kubernetes.md": {
+    "published": "2026-07-19T07:01:31+05:30",
+    "modified": "2026-07-19T07:01:31+05:30"
+  },
+  "challenges/62-kubernetes-secrets.md": {
+    "published": "2026-07-19T07:27:08+05:30",
+    "modified": "2026-07-19T07:27:08+05:30"
+  },
+  "challenges/63-deploy-multi-tier-application-on-kubernetes.md": {
+    "published": "2026-07-19T08:56:34+05:30",
+    "modified": "2026-07-19T08:56:34+05:30"
+  },
+  "challenges/64-fix-python-app-deployed-on-kubernetes-cluster.md": {
+    "published": "2026-07-19T19:07:29+05:30",
+    "modified": "2026-07-19T19:07:29+05:30"
+  },
+  "challenges/65-deploy-redis-deployment-on-kubernetes.md": {
+    "published": "2026-07-19T19:07:29+05:30",
+    "modified": "2026-07-19T19:07:29+05:30"
+  },
+  "challenges/66-deploy-mysql-on-kubernetes-with-pv-pvc-and-secrets.md": {
+    "published": "2026-07-20T19:24:30+05:30",
+    "modified": "2026-07-20T19:24:30+05:30"
+  },
+  "challenges/67-deploy-guestbook-application-on-kubernetes.md": {
+    "published": "2026-07-22T19:59:11+05:30",
+    "modified": "2026-07-22T22:32:24+05:30"
+  },
+  "challenges/68-set-up-jenkins-server.md": {
+    "published": "2026-07-22T21:46:02+05:30",
+    "modified": "2026-07-23T20:18:51+05:30"
+  },
+  "challenges/69-install-jenkins-plugins.md": {
+    "published": "2026-07-23T21:19:31+05:30",
+    "modified": "2026-07-23T21:19:31+05:30"
+  },
+  "challenges/70-configure-jenkins-user-access.md": {
+    "published": "2026-07-26T21:59:08+05:30",
+    "modified": "2026-07-26T21:59:08+05:30"
+  },
+  "challenges/71-configure-jenkins-job-for-package-installation.md": {
+    "published": "2026-07-28T11:54:06+05:30",
+    "modified": "2026-07-28T11:54:06+05:30"
+  },
+  "challenges/72-configure-jenkins-parameterized-job.md": {
+    "published": "2026-07-28T11:54:06+05:30",
+    "modified": "2026-08-03T21:55:48+05:30"
+  },
+  "challenges/73-schedule-jenkins-job-to-copy-logs.md": {
+    "published": "2026-07-28T11:54:06+05:30",
+    "modified": "2026-07-28T11:54:06+05:30"
+  },
+  "challenges/74-configure-jenkins-job-for-database-backup.md": {
+    "published": "2026-07-28T11:54:06+05:30",
+    "modified": "2026-07-28T11:54:06+05:30"
+  },
+  "challenges/75-add-jenkins-ssh-build-agent-nodes.md": {
+    "published": "2026-07-30T19:28:33+05:30",
+    "modified": "2026-08-03T21:55:48+05:30"
+  },
+  "challenges/76-configure-job-level-authorization-strategy.md": {
+    "published": "2026-07-30T19:28:33+05:30",
+    "modified": "2026-07-30T19:28:33+05:30"
+  },
+  "challenges/77-jenkins-deploy-pipeline.md": {
+    "published": "2026-07-31T19:00:38+05:30",
+    "modified": "2026-08-03T21:51:01+05:30"
+  },
+  "challenges/78-jenkins-deploy-pipeline-parameterized.md": {
+    "published": "2026-07-31T19:00:38+05:30",
+    "modified": "2026-08-03T21:51:01+05:30"
+  },
+  "challenges/79-jenkins-deployment-job.md": {
+    "published": "2026-08-02T19:45:14+05:30",
+    "modified": "2026-08-03T21:57:56+05:30"
+  },
+  "challenges/80-jenkins-chained-builds.md": {
+    "published": "2026-08-02T20:07:49+05:30",
+    "modified": "2026-08-03T21:46:50+05:30"
+  },
+  "challenges/81-jenkins-multistage-pipeline.md": {
+    "published": "2026-08-03T21:41:53+05:30",
+    "modified": "2026-08-03T21:46:50+05:30"
+  },
+  "challenges/82-create-ansible-inventory-for-app-server-testing.md": {
+    "published": "2026-08-05T18:14:11+05:30",
+    "modified": "2026-08-06T19:14:29+05:30"
+  },
+  "challenges/83-troubleshoot-and-create-ansible-playbook.md": {
+    "published": "2026-08-06T19:14:29+05:30",
+    "modified": "2026-08-06T19:14:29+05:30"
+  },
+  "challenges/84-copy-data-to-app-servers-using-ansible.md": {
+    "published": "2026-08-06T19:14:29+05:30",
+    "modified": "2026-08-06T19:14:29+05:30"
+  },
+  "challenges/85-create-files-on-app-servers-using-ansible.md": {
+    "published": "2026-08-06T19:14:29+05:30",
+    "modified": "2026-08-06T19:14:29+05:30"
+  },
+  "challenges/86-set-up-passwordless-ssh-for-ansible.md": {
+    "published": "2026-08-07T19:56:54+05:30",
+    "modified": "2026-08-07T19:56:54+05:30"
+  },
+  "challenges/87-install-chrony-package-using-ansible.md": {
+    "published": "2026-08-07T19:56:54+05:30",
+    "modified": "2026-08-07T19:56:54+05:30"
+  },
+  "challenges/88-deploy-httpd-web-server-using-ansible.md": {
+    "published": "2026-08-07T19:56:54+05:30",
+    "modified": "2026-08-07T19:56:54+05:30"
+  },
+  "challenges/89-ansible-manage-services.md": {
+    "published": "2026-08-09T10:04:37+05:30",
+    "modified": "2026-08-09T10:04:37+05:30"
+  },
+  "challenges/90-managing-acls-using-ansible.md": {
+    "published": "2026-08-09T10:04:37+05:30",
+    "modified": "2026-08-09T10:04:37+05:30"
+  },
+  "challenges/91-ansible-lineinfile-module.md": {
+    "published": "2026-08-09T10:13:30+05:30",
+    "modified": "2026-08-09T19:37:22+05:30"
+  },
+  "challenges/92-managing-jinja2-templates-using-ansible.md": {
+    "published": "2026-08-09T19:37:22+05:30",
+    "modified": "2026-08-09T19:37:22+05:30"
+  },
+  "challenges/93-using-ansible-conditionals.md": {
+    "published": "2026-08-09T19:37:22+05:30",
+    "modified": "2026-08-09T19:37:22+05:30"
+  },
+  "challenges/94-create-vpc-using-terraform.md": {
+    "published": "2026-08-11T23:01:11+05:30",
+    "modified": "2026-08-11T23:01:11+05:30"
+  },
+  "challenges/95-create-security-group-using-terraform.md": {
+    "published": "2026-08-11T23:01:11+05:30",
+    "modified": "2026-08-11T23:01:11+05:30"
+  },
+  "challenges/96-create-ec2-instance-using-terraform.md": {
+    "published": "2026-08-11T23:01:11+05:30",
+    "modified": "2026-08-11T23:01:11+05:30"
+  },
+  "challenges/97-create-iam-policy-using-terraform.md": {
+    "published": "2026-08-11T23:01:11+05:30",
+    "modified": "2026-08-11T23:01:11+05:30"
+  },
+  "challenges/98-create-private-vpc-subnet-and-ec2-using-terraform.md": {
+    "published": "2026-08-12T18:26:55+05:30",
+    "modified": "2026-08-12T18:26:55+05:30"
+  },
+  "challenges/99-create-dynamodb-table-iam-role-and-policy-using-terraform.md": {
+    "published": "2026-08-12T18:26:55+05:30",
+    "modified": "2026-08-12T18:26:55+05:30"
+  },
+  "contact.md": {
+    "published": "2026-07-03T22:21:55+05:30",
+    "modified": "2026-08-12T18:26:55+05:30"
+  }
+}

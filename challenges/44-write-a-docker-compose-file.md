@@ -21,7 +21,7 @@ A standard Docker Compose file is structured around three key configurations:
 
 ```mermaid
 graph TD
-    subgraph Host Machine (Port 6100)
+    subgraph Host["Host Machine (Port 6100)"]
         HostDir["Host Directory (/opt/data/)"]
     end
     subgraph Docker Compose Environment

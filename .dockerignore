@@ -1,5 +1,8 @@
 .git
 .vscode
 .DS_Store
+**/.DS_Store
 Dockerfile
 .dockerignore
+node_modules
+dist

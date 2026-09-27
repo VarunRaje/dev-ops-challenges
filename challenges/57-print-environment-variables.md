@@ -8,11 +8,11 @@ In containerized environments, this is primarily achieved using **Environment Va
 
 ```mermaid
 graph TD
-    subgraph Pod: print-envars-greeting
+    subgraph Pod["Pod: print-envars-greeting"]
         spec[Pod Spec: env variables] -->|Injects GREETING=Welcome to| Container[Container: print-env-container]
         spec -->|Injects COMPANY=Nautilus| Container
         spec -->|Injects GROUP=Datacenter| Container
-        Container -->|Executes shell command| Shell[sh -c 'echo \"$GREETING $COMPANY $GROUP\"']
+        Container -->|Executes shell command| Shell["sh -c 'echo $GREETING $COMPANY $GROUP'"]
         Shell -->|Outputs to stdout| Logs[Logs: Welcome to Nautilus Datacenter]
     end
 ```
